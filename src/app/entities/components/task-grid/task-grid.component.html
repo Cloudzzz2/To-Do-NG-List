@@ -1,0 +1,15 @@
+<dx-data-grid [dataSource]="taskArray"
+              [showBorders]="true"
+              [showRowLines]="true"
+              [width]="'80%'"
+              class="data-grid">
+    <dxi-column [dataField]="LTask.PRIORITY_TEXT"
+                caption="Приоритет"
+    ></dxi-column>
+    <dxi-column [dataField]="LTask.TEXT"
+                caption="Текст задачи"
+    ></dxi-column>
+    <dxi-column [dataField]="LTask.DATE"
+                caption="Дата создания"
+    ></dxi-column>
+</dx-data-grid>

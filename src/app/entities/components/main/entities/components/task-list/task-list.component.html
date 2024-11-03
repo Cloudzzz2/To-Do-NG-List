@@ -1,0 +1,58 @@
+<div class="tasks">
+    <div *ngIf="tasksArray.length === 0; else task"
+         class="text-array-is-empty-container">
+        <p class="text-array-is-empty">Список задач пуст</p>
+    </div>
+    <ng-template #task>
+        <div *ngFor="let elem of tasksArray | filters : filtersForm.value; let i = index"
+             class="task-container">
+            <div [ngSwitch]="elem.taskPriorityValue"
+                 class="task-area-and-status">
+                <span *ngSwitchCase="EPriority.LOW"
+                      class="priority-text-low">
+                    {{ elem.taskPriorityText | uppercase }}
+                </span>
+                <span *ngSwitchCase="EPriority.MEDIUM"
+                      class="priority-text-medium">
+                    {{ elem.taskPriorityText | uppercase }}
+                </span>
+                <span *ngSwitchCase="EPriority.HIGH"
+                      class="priority-text-high">
+                    {{ elem.taskPriorityText | uppercase }}
+                </span>
+                <dx-autocomplete *ngIf="elem.status === EStatus.CANCELED"
+                                (onChange)="taskEdit(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-canceled"
+                ></dx-autocomplete>
+                <dx-autocomplete *ngIf="elem.status === EStatus.ACTIVE"
+                                (onChange)="taskEdit(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-active"
+                ></dx-autocomplete>
+                <dx-autocomplete *ngIf="elem.status === EStatus.COMPLETED"
+                                (onChange)="taskEdit(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-completed"
+                ></dx-autocomplete>
+                <span class="cross-check-span">
+                    <dx-button *ngIf="elem.status != EStatus.COMPLETED"
+                               (click)="toUpperStatus(elem)"
+                               icon="check"
+                    ></dx-button>
+                    <dx-button *ngIf="elem.status != EStatus.CANCELED"
+                               (click)="toLowerStatus(elem)"
+                               icon="remove"
+                    ></dx-button>
+                </span>
+                <dx-button (click)="deleteTask(elem.id)"
+                           icon="trash"
+                           class="delete-button"
+                ></dx-button>
+            </div>
+            <div class="date-container">
+                {{ elem.taskDate | date : 'dd.MM.yyyy HH:mm' }}
+            </div>
+        </div>
+    </ng-template>  
+</div>

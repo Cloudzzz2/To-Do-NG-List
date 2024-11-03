@@ -1,0 +1,16 @@
+:host {
+    .button-group{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .to-main-button{
+        margin-left: 10px;
+        border-radius: 2px;
+    }
+    
+    .to-grid-button{
+        margin-left: 10px;
+        border-radius: 2px;
+    }
+}

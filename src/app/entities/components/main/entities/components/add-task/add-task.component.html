@@ -1,0 +1,23 @@
+<div [formGroup]="inputForm"
+     class="create-task">
+    <dx-select-box [items]="prioritySelect"
+                   valueExpr="value"
+                   displayExpr="text"
+                   formControlName="priority"
+                   label="Приоритет"
+                   class="priority-select-box"
+    ></dx-select-box>
+    <dx-text-box formControlName="taskInput"
+                 stylingMode="outlined"
+                 label="Текст задачи" 
+                 labelMode="static"
+                 placeholder="Введите текст.."
+                 class="enter-task-text-box"
+    ></dx-text-box>
+    <dx-button (click)="addTask()"
+               stylingMode="contained" 
+               type="normal" 
+               text="Добавить задачу"
+               class="add-task-button"
+    ></dx-button>
+</div>

@@ -1,0 +1,104 @@
+:host {
+    .tasks{
+        padding-bottom: 30px;
+        margin-top: 30px;
+        width: 1000px;
+        min-height: 100px;
+        max-height: 700px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        height: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 5px;
+        border-color: black;
+    }
+    
+    .task-container{
+        margin-top: 30px;
+    }
+    
+    .task-area-and-status{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .task-field-active{
+        width: 85%;
+        margin-left: 20px;
+        min-height: 100px;
+        height: fit-content;
+    }
+    
+    .task-field-completed{
+        background-color: rgba(0, 255, 0, 0.3);
+        width: 85%;
+        margin-left: 20px;
+        min-height: 100px;
+        height: fit-content;
+    }
+    
+    .task-field-canceled{
+        background-color: rgba(255, 0, 0, 0.3);
+        width: 85%;
+        margin-left: 20px;
+        min-height: 100px;
+        height: fit-content;
+    }
+    
+    .date-container{
+        margin-left: 140px;
+        margin-top: 10px;
+    }
+    
+    .cross-check-span{
+        position: relative;
+        border-spacing: 10px;
+        display: grid;
+        grid-column: inherit;
+        margin-left: 10px;
+        height: 72px;
+        width: 62px;
+    }
+    
+    .priority-text-low{
+        margin-left: 30px;
+        width: 100px;
+        color: #bb0b0b;
+    }
+    
+    .priority-text-medium{
+        margin-left: 30px;
+        width: 100px;
+        color: #eea70f;
+    }
+    
+    .priority-text-high{
+        margin-left: 30px;
+        width: 100px;
+        color: #32CD32;
+    }
+    
+    .delete-button{
+        margin-right: 30px;
+        margin-left: 10px;
+    }
+    
+    .text-array-is-empty-container{
+        align-items: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+    }
+    
+    .text-array-is-empty{
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align: center;
+        color: black;
+    }
+}
