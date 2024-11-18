@@ -1,4 +1,6 @@
 import { ESort } from "../enums/sort.enum";
+import { IIconItem } from "../interfaces/icon-item.interface";
+import { IItem } from "../interfaces/item.interface";
 
 export abstract class AppLib {
     public static readonly defaultPriority: number = 1;
@@ -6,9 +8,10 @@ export abstract class AppLib {
     public static readonly defaultStatus: number = 2;
     
     public static readonly defaultPrioritySort: number = 1;
+    
     public static readonly defaultDateSort: number = 1;
 
-    public static readonly dateSortVariants = [
+    public static readonly dateSortVariants: IIconItem[] = [
         {
           value: ESort.ASCENDING, 
           text: 'дата создания', 
@@ -20,7 +23,7 @@ export abstract class AppLib {
           icon: 'arrowdown'
         }
       ];
-      public static readonly priorityVariants = [
+      public static readonly priorityVariants: IItem[] = [
         {
           value: 1,
           text: 'низкий'
@@ -34,7 +37,8 @@ export abstract class AppLib {
           text: 'высокий'
         }
       ];
-      public static readonly priorityFilterVariants = [
+
+      public static readonly priorityFilterVariants: IItem[] = [
         {
           value: 0,
           text: 'любой'
@@ -52,7 +56,7 @@ export abstract class AppLib {
           text: 'высокий'
         },
       ];
-      public static readonly prioritySortVariants = [
+      public static readonly prioritySortVariants: IIconItem[] = [
         {
           value: ESort.ASCENDING, 
           text: 'приоритет', 

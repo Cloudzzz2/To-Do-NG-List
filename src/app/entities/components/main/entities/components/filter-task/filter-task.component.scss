@@ -1,5 +1,5 @@
 :host {
-    .filter-task-div{
+    .filter-task-div {
         padding-top: 30px;
         padding-bottom: 30px;
         margin-top: 50px;
@@ -7,67 +7,65 @@
         margin-right: auto;
         width: 1000px;
         height: fit-content;
-        border-style: solid;
-        border-width: 2px;
+        border: 2px solid black;
         border-radius: 5px;
-        border-color: black;
     }
     
-    .filters{
+    .filters {
         display: flex;
         flex-direction: row;
     }
     
-    .select-box-field{
+    .select-box-field {
         display: flex;
         flex-direction: row;
     }
     
-    .select-box-button{
+    .select-box-button {
         border-color: white;
         background-color: white;
         width: 30px;
     }
     
-    .priority-filter-select-box{
+    .priority-filter-select-box {
         width: 250px;
         margin-left: 60px;
     }
     
-    .checkbox-group{
+    .checkbox-group {
         align-self: center;
         display: flex;
         margin-left: 150px;
         width: 500px;
     }
     
-    .checkbox-group-text{
+    .checkbox-group-text {
         align-self: center;
         margin-right: 25px;
     }
     
-    .checkbox-text{
+    .checkbox-text {
         margin-top: 2px;
         margin-right: 5px;
         margin-left: 5px;
     }
     
-    .sorts{
+    .sorts {
         margin-top: 30px;
         display: flex;
     }
     
-    .date-sort-select-box{
+    .date-sort-select-box {
         margin-left: 60px;
         width: 250px;
     }
     
-    .priority-sort-select-box{
+    .priority-sort-select-box {
         margin-left: 150px;
         width: 450px;
     }
     
-    .search-task-text-box{
+    .search-task-text-box {
         margin-top: 30px;
         width: 85%;
         margin-left: 60px;

@@ -1,52 +1,42 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ITask } from '../interfaces/task.interface';
-import { BehaviorSubject, Observable } from 'rxjs';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private _tasks$$: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]>([]);
-  public tasks$: Observable<ITask[]> = this._tasks$$.asObservable();
+  private readonly http = inject(HttpClient);
 
   /**
    * Метод получения задач с сервера
    */
-  public getTask(): void {
-    fetch('http://127.0.0.1:3000/items', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-    })
-    .then((response: Response) => response.json())
-    .then((tasks: ITask[]) => {
-      let tasksData: ITask[] = [];
-      tasksData = tasks.map((task: ITask) => {
-        return {
-          ...task,
-          taskDate: new Date(task.taskDate)
-        };
-      });
-      this._tasks$$.next(tasksData);
-    })
-  }
+  public getTask(): Observable<ITask[]> {
+    return this.http.get<ITask<string>[]>('http://127.0.0.1:3000/items').pipe(
+      map((items: ITask<string>[]) => {
+        return items.map((item: ITask<string>) => {
+          return {
+            ...item,
+            taskDate: new Date(item.taskDate)
+          }
+        })
+      })
+    );
+  };
 
   /**
    * Метод добавления задачи
    * 
    * @param {ITask} task - задача
    */
-  public addTask(task: ITask): void {
-    fetch('http://127.0.0.1:3000/items', {
-      method: 'POST',
+  public addTask(task: ITask): Observable<ITask> {
+    return <Observable<ITask>>this.http.post(`http://127.0.0.1:3000/items`, JSON.stringify(task), {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify(task)
-    })
-    .then(() => this.getTask());
+      }
+    });
   };
 
   /**
@@ -54,11 +44,8 @@ export class DataService {
    * 
    * @param {number} id - айди задачи
    */
-  public deleteTask(id: number): void {
-    fetch(`http://127.0.0.1:3000/items/${id}`, {
-      method: 'DELETE',
-    })
-    .then(() => this.getTask());
+  public deleteTask(id: number): Observable<ITask> {
+    return <Observable<ITask>>this.http.delete(`http://127.0.0.1:3000/items/${id}`);
   };
 
   /**
@@ -66,13 +53,11 @@ export class DataService {
    * 
    * @param {ITask} task - задача
    */
-  public refreshTask(task: ITask): void {
-    fetch(`http://127.0.0.1:3000/items/${task.id}`, {
-      method: 'PUT',
+  public refreshTask(task: ITask): Observable<ITask> {
+    return <Observable<ITask>>this.http.put(`http://127.0.0.1:3000/items/${task.id}`, JSON.stringify(task), {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
-       },
-      body: JSON.stringify(task)
-  })
+      }
+    });
   };
-}
+};

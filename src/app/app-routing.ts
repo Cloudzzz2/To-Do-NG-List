@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { MainComponent } from './entities/components/main/main.component';
 import { TaskGridComponent } from './entities/components/task-grid/task-grid.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'main',
-    component: MainComponent
+    component: MainComponent,
   },
   {
     path: 'grid',
@@ -17,11 +16,4 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'main'
   }
-
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

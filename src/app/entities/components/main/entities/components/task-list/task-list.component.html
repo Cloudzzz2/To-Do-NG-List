@@ -1,10 +1,10 @@
 <div class="tasks">
-    <div *ngIf="tasksArray.length === 0; else task"
+    <div *ngIf="tasks.length === 0; else task"
          class="text-array-is-empty-container">
         <p class="text-array-is-empty">Список задач пуст</p>
     </div>
     <ng-template #task>
-        <div *ngFor="let elem of tasksArray | filters : filtersForm.value; let i = index"
+        <div *ngFor="let elem of tasks | filters : filtersForm.value"
              class="task-container">
             <div [ngSwitch]="elem.taskPriorityValue"
                  class="task-area-and-status">
@@ -36,16 +36,16 @@
                                 class="task-field-completed"
                 ></dx-autocomplete>
                 <span class="cross-check-span">
-                    <dx-button *ngIf="elem.status != EStatus.COMPLETED"
-                               (click)="toUpperStatus(elem)"
+                    <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
+                               (onClick)="toUpperStatus(elem)"
                                icon="check"
                     ></dx-button>
-                    <dx-button *ngIf="elem.status != EStatus.CANCELED"
-                               (click)="toLowerStatus(elem)"
+                    <dx-button *ngIf="elem.status !== EStatus.CANCELED"
+                               (onClick)="toLowerStatus(elem)"
                                icon="remove"
                     ></dx-button>
                 </span>
-                <dx-button (click)="deleteTask(elem.id)"
+                <dx-button (onClick)="deleteTask(elem.id)"
                            icon="trash"
                            class="delete-button"
                 ></dx-button>

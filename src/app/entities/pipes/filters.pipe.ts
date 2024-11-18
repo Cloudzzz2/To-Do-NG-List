@@ -5,6 +5,7 @@ import { EPriority } from '../enums/priority.enum';
 import { EStatus } from '../enums/status.enum';
 
 @Pipe({
+  standalone: true,
   pure: false, 
   name: 'filters'
 })
@@ -21,15 +22,15 @@ export class FiltersPipe implements PipeTransform {
   public transform(items:ITask[], filtersFormValue: any): ITask[] {
     switch (filtersFormValue.priorityFilter) {
       // Фильтр по приоритету
-      case (1): {
+      case (EPriority.LOW): {
         items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.LOW);
         break;
       }
-      case (2): {
+      case (EPriority.MEDIUM): {
         items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.MEDIUM);
         break;
       }
-      case (3): {
+      case (EPriority.HIGH): {
         items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.HIGH);
         break;
       }
@@ -48,16 +49,16 @@ export class FiltersPipe implements PipeTransform {
 
     // Сортировка по дате
     if (filtersFormValue.dateSort === AppLib.defaultDateSort) {
-      items = items.sort((a: ITask, b: ITask) => Number(a.taskDate) - Number(b.taskDate))
+      items = items.sort((a: ITask, b: ITask) => Number(a.taskDate) - Number(b.taskDate));
     } else {
-      items = items.sort((a: ITask, b: ITask) => Number(b.taskDate) - Number(a.taskDate))
+      items = items.sort((a: ITask, b: ITask) => Number(b.taskDate) - Number(a.taskDate));
     }
 
     // Сортировка по приоритету
     if (filtersFormValue.prioritySort === AppLib.defaultPrioritySort) {
-      items = items.sort((a: ITask, b: ITask) => b.taskPriorityValue - a.taskPriorityValue)
+      items = items.sort((a: ITask, b: ITask) => b.taskPriorityValue - a.taskPriorityValue);
     } else {
-      items = items.sort((a: ITask, b: ITask) => a.taskPriorityValue - b.taskPriorityValue)
+      items = items.sort((a: ITask, b: ITask) => a.taskPriorityValue - b.taskPriorityValue);
     }
 
     // Поиск задачи по тексту

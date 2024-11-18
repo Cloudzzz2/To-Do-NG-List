@@ -1,5 +1,5 @@
 :host {
-    .tasks{
+    .tasks {
         padding-bottom: 30px;
         margin-top: 30px;
         width: 1000px;
@@ -10,30 +10,28 @@
         height: fit-content;
         margin-left: auto;
         margin-right: auto;
-        border-style: solid;
-        border-width: 2px;
+        border: 2px solid black;
         border-radius: 5px;
-        border-color: black;
     }
     
-    .task-container{
+    .task-container {
         margin-top: 30px;
     }
     
-    .task-area-and-status{
+    .task-area-and-status {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
     
-    .task-field-active{
+    .task-field-active {
         width: 85%;
         margin-left: 20px;
         min-height: 100px;
         height: fit-content;
     }
     
-    .task-field-completed{
+    .task-field-completed {
         background-color: rgba(0, 255, 0, 0.3);
         width: 85%;
         margin-left: 20px;
@@ -41,7 +39,7 @@
         height: fit-content;
     }
     
-    .task-field-canceled{
+    .task-field-canceled {
         background-color: rgba(255, 0, 0, 0.3);
         width: 85%;
         margin-left: 20px;
@@ -49,12 +47,12 @@
         height: fit-content;
     }
     
-    .date-container{
+    .date-container {
         margin-left: 140px;
         margin-top: 10px;
     }
     
-    .cross-check-span{
+    .cross-check-span {
         position: relative;
         border-spacing: 10px;
         display: grid;
@@ -64,30 +62,30 @@
         width: 62px;
     }
     
-    .priority-text-low{
+    .priority-text-low {
         margin-left: 30px;
         width: 100px;
         color: #bb0b0b;
     }
     
-    .priority-text-medium{
+    .priority-text-medium {
         margin-left: 30px;
         width: 100px;
         color: #eea70f;
     }
     
-    .priority-text-high{
+    .priority-text-high {
         margin-left: 30px;
         width: 100px;
         color: #32CD32;
     }
     
-    .delete-button{
+    .delete-button {
         margin-right: 30px;
         margin-left: 10px;
     }
     
-    .text-array-is-empty-container{
+    .text-array-is-empty-container {
         align-items: center;
         position: relative;
         display: flex;
@@ -95,7 +93,7 @@
         height: 100px;
     }
     
-    .text-array-is-empty{
+    .text-array-is-empty {
         margin-top: auto;
         margin-bottom: auto;
         text-align: center;
