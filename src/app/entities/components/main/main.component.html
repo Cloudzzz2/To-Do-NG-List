@@ -1,0 +1,7 @@
+<div class="main-wrapp">
+    <app-add-task (refreshTask)="getTask()"></app-add-task>
+    <app-filter-task></app-filter-task>
+    <app-task-list [tasks]="(tasks$ | async) || []"
+                   (refreshTask)="getTask()"
+    ></app-task-list>
+</div>
