@@ -1,14 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilderService } from '../../../../../services/form-builder.service';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppLib } from 'src/app/entities/libs/app.lib';
 import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
+import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
+import { IItem } from 'src/app/entities/interfaces/item.interface';
+import { IIconItem } from 'src/app/entities/interfaces/icon-item.interface';
+import { LIcon } from 'src/app/entities/labels/icon.labels';
+import { FilterTaskTemplateComponent } from './filter-task-template/filter-task-template/filter-task-template.component';
 
 
 @Component({
   selector: 'app-filter-task',
   standalone: true,
   imports: [
+    FilterTaskTemplateComponent,
     DxSelectBoxModule,
     DxCheckBoxModule,
     DxButtonModule,
@@ -20,11 +26,13 @@ import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModu
   styleUrls: ['./filter-task.component.scss']
 })
 export class FilterTaskComponent {
-  private readonly _formBuilderService = inject(FormBuilderService);
+  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
   
-  public filtersForm: FormGroup = this._formBuilderService.filtersForm;
-  public priorityFilter = AppLib.priorityFilterVariants;
-  public prioritySelect = AppLib.priorityVariants;
-  public dateSelect = AppLib.dateSortVariants;
-  public prioritySortSelect = AppLib.prioritySortVariants; 
+  public filtersForm = this._formBuilderService.filtersForm;
+  public prioritiesFilter: IItem[] = AppLib.priorityFilterVariants;
+  public dateSelect: IIconItem[] = AppLib.dateSortVariants;
+  public prioritiesSortSelect: IIconItem[] = AppLib.prioritySortVariants; 
+
+  protected readonly LFilterForm: typeof LFilterForm = LFilterForm;
+  protected readonly LIcon: typeof LIcon = LIcon;
 }

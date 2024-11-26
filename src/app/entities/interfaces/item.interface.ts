@@ -7,6 +7,6 @@ import { LIcon } from "../labels/icon.labels";
  * @property {string} TEXT - текст варианта сортировки
 */
 export interface IItem {
-    [LIcon.VALUE]: number,
-    [LIcon.TEXT]: string
+    [LIcon.VALUE]: number;
+    [LIcon.TEXT]: string;
 }

@@ -6,49 +6,35 @@
     <ng-template #task>
         <div *ngFor="let elem of tasks | filters : filtersForm.value"
              class="task-container">
-            <div [ngSwitch]="elem.taskPriorityValue"
-                 class="task-area-and-status">
-                <span *ngSwitchCase="EPriority.LOW"
-                      class="priority-text-low">
-                    {{ elem.taskPriorityText | uppercase }}
-                </span>
-                <span *ngSwitchCase="EPriority.MEDIUM"
-                      class="priority-text-medium">
-                    {{ elem.taskPriorityText | uppercase }}
-                </span>
-                <span *ngSwitchCase="EPriority.HIGH"
-                      class="priority-text-high">
+             <div class="task-area-and-status">
+                <span [ngClass]="elem.taskPriorityValue === EPriority.LOW ? 'priority-text-low' 
+                : elem.taskPriorityValue === EPriority.MEDIUM ? 'priority-text-medium'
+                : 'priority-text-high'">
                     {{ elem.taskPriorityText | uppercase }}
                 </span>
                 <dx-autocomplete *ngIf="elem.status === EStatus.CANCELED"
-                                (onChange)="taskEdit(elem)"
+                                (onChange)="editTask(elem)"
                                 [(value)]="elem.taskText"
-                                class="task-field-canceled"
-                ></dx-autocomplete>
+                                class="task-field-canceled"/>
                 <dx-autocomplete *ngIf="elem.status === EStatus.ACTIVE"
-                                (onChange)="taskEdit(elem)"
+                                (onChange)="editTask(elem)"
                                 [(value)]="elem.taskText"
-                                class="task-field-active"
-                ></dx-autocomplete>
+                                class="task-field-active"/>
                 <dx-autocomplete *ngIf="elem.status === EStatus.COMPLETED"
-                                (onChange)="taskEdit(elem)"
+                                (onChange)="editTask(elem)"
                                 [(value)]="elem.taskText"
-                                class="task-field-completed"
-                ></dx-autocomplete>
+                                class="task-field-completed"/>
                 <span class="cross-check-span">
                     <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
                                (onClick)="toUpperStatus(elem)"
-                               icon="check"
-                    ></dx-button>
+                               icon="check"/>
                     <dx-button *ngIf="elem.status !== EStatus.CANCELED"
                                (onClick)="toLowerStatus(elem)"
-                               icon="remove"
-                    ></dx-button>
+                               icon="remove"/>
                 </span>
                 <dx-button (onClick)="deleteTask(elem.id)"
                            icon="trash"
-                           class="delete-button"
-                ></dx-button>
+                           class="delete-button"/>
             </div>
             <div class="date-container">
                 {{ elem.taskDate | date : 'dd.MM.yyyy HH:mm' }}

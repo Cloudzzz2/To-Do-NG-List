@@ -1,27 +1,26 @@
 :host {
     .create-task {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         align-items: center;
         display: flex;
         flex-direction: row;
-        width: 1000px;
+        width: 70%;
         height: 100px;
         border: 2px solid black;
         border-radius: 5px;
-    }
-
-    .priority-select-box {
-        margin-left: 30px;
-    }
-
-    .enter-task-text-box {
-        margin-left: 50px;
-        width: 480px;
-    }
-
-    .add-task-button {
-        margin-left: 50px;
-        border-radius: 2px;
+        
+        .priority-select-box {
+            margin: 0 0 0 30px;
+        }
+    
+        .enter-task-text-box {
+            margin: 0 0 0 50px;
+            width: 480px;
+        }
+    
+        .add-task-button {
+            margin: 0 0 0 50px;
+            border-radius: 2px;
+        }
     }
 }

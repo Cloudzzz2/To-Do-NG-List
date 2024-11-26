@@ -24,10 +24,13 @@ import { ITask } from '../../interfaces/task.interface';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  private readonly _dataService = inject(DataService);
+  private readonly _dataService: DataService = inject(DataService);
 
   public tasks$: Observable<ITask[]> = this._dataService.getTask();
 
+  /**
+   * Метод получения списка задач
+   */
   public getTask(): void {
     this.tasks$ = this._dataService.getTask();
   }

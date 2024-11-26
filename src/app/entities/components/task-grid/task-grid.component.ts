@@ -21,19 +21,19 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./task-grid.component.scss']
 })
 export class TaskGridComponent {
-  private readonly _dataService = inject(DataService);
+  private readonly _dataService: DataService = inject(DataService);
 
-  public tasks$: Observable<any> = this._dataService.getTask().pipe(
+  protected readonly LTask: typeof LTask = LTask;
+
+  public tasks$: Observable<ITask[]> = this._dataService.getTask().pipe(
     map((items: ITask[]) => {
       return items.map((item: ITask) => {
+        let dateToday = new Date(item.taskDate);
         return {
           ...item,
-          taskDate: new Date(item.taskDate).toLocaleDateString() + ' ' + new Date(item.taskDate).getHours() 
-          + ':' + ('0' + new Date(item.taskDate).getMinutes()).slice(-2)
+          taskDate: `${dateToday.toLocaleDateString()} ${dateToday.getHours()}:${('0' + dateToday.getMinutes()).slice(-2)}`
         }
       })
     })
   );
-
-  protected readonly LTask: typeof LTask = LTask;
 }

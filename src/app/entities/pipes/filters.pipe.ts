@@ -3,15 +3,14 @@ import { ITask } from '../interfaces/task.interface';
 import { AppLib } from '../libs/app.lib';
 import { EPriority } from '../enums/priority.enum';
 import { EStatus } from '../enums/status.enum';
+import { IFilterForm } from '../interfaces/filter-form.interface';
 
 @Pipe({
   standalone: true,
   pure: false, 
   name: 'filters'
 })
-
 export class FiltersPipe implements PipeTransform {
-
   /**
    * Фильтрация и сортировка задач
    * @param {ITask[]} items - задачи

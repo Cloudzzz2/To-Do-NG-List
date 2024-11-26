@@ -1,15 +1,12 @@
-<dx-data-grid [dataSource]="tasks$ | async"
+<dx-data-grid [dataSource]="(tasks$ || []) | async"
               [showBorders]="true"
               [showRowLines]="true"
               [width]="'80%'"
               class="data-grid">
     <dxi-column [dataField]="LTask.PRIORITY_TEXT"
-                caption="Приоритет"
-    ></dxi-column>
+                caption="Приоритет"/>
     <dxi-column [dataField]="LTask.TEXT"
-                caption="Текст задачи"
-    ></dxi-column>
+                caption="Текст задачи"/>
     <dxi-column [dataField]="LTask.DATE"
-                caption="Дата создания"
-    ></dxi-column>
+                caption="Дата создания"/>
 </dx-data-grid>

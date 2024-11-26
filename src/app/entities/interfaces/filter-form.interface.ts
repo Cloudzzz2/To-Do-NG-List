@@ -12,11 +12,11 @@ import { LFilterForm } from "../labels/filter-form.label";
  * @property {string} SEARCH - поле поиска задачи
  */
 export interface IFilterForm {
-    [LFilterForm.PRIORITY_FILTER]: string,
-    [LFilterForm.STATUS_ACTIVE]: boolean,
-    [LFilterForm.STATUS_CANCELED]: boolean,
-    [LFilterForm.STATUS_COMPLETED]: boolean,
-    [LFilterForm.DATE_SORT]: number,
-    [LFilterForm.PRIORITY_SORT]: number,
-    [LFilterForm.SEARCH]: string
+    [LFilterForm.PRIORITY_FILTER]: number;
+    [LFilterForm.STATUS_ACTIVE]: boolean;
+    [LFilterForm.STATUS_CANCELED]: boolean;
+    [LFilterForm.STATUS_COMPLETED]: boolean;
+    [LFilterForm.DATE_SORT]: number;
+    [LFilterForm.PRIORITY_SORT]: number;
+    [LFilterForm.SEARCH]: string;
 }

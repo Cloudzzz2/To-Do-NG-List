@@ -1,70 +1,38 @@
 <div [formGroup]="filtersForm" 
-     class="filter-task-div">
-        <div class="filters">
-            <dx-select-box [dataSource]="priorityFilter"
-                           valueExpr="value"
-                           displayExpr="text"
-                           formControlName="priorityFilter"
+     class="filter-task-container">
+        <div class="sortNFiltersField">
+            <dx-select-box [dataSource]="prioritiesFilter"
+                           [formControlName]="LFilterForm.PRIORITY_FILTER"
+                           [valueExpr]="LIcon.VALUE"
+                           [displayExpr]="LIcon.TEXT"
                            label="Фильтр по приоритету"
                            labelMode="static"
-                           class="priority-filter-select-box"
-            ></dx-select-box>
+                           class="priority-filter-select-box"/>
             <div class="checkbox-group">
                 <div class="checkbox-group-text">
                     Фильтр по статусу:
                 </div>
                 <span class="checkbox-text">активные</span>
-                <dx-check-box formControlName="statusFilterActive"
-                ></dx-check-box>
+                <dx-check-box [formControlName]="LFilterForm.STATUS_ACTIVE"/>
                 <span class="checkbox-text">отменённые</span>
-                <dx-check-box formControlName="statusFilterCanceled"
-                ></dx-check-box>
+                <dx-check-box [formControlName]="LFilterForm.STATUS_CANCELED"/>
                 <span class="checkbox-text">завершённые</span>
-                <dx-check-box formControlName="statusFilterCompleted"></dx-check-box>
+                <dx-check-box [formControlName]="LFilterForm.STATUS_COMPLETED"></dx-check-box>
             </div>
         </div>
         <div class="sorts">
-            <dx-select-box [dataSource]="dateSelect"
-                           formControlName="dateSort"
-                           displayExpr="text"
-                           valueExpr="value"
-                           fieldTemplate="field"
-                           label="Сортировка по дате"
-                           labelMode="static"
-                           class="date-sort-select-box">
-                <div *dxTemplate="let data of 'field'"
-                     class="select-box-field">
-                    <dx-button [icon]="data.icon"
-                               class="select-box-button"
-                    ></dx-button>
-                    <dx-text-box [value]="data.text"
-                                 [readOnly]="true"
-                    ></dx-text-box>
-                </div>
-            </dx-select-box>
-            <dx-select-box [dataSource]="prioritySortSelect"
-                           formControlName="prioritySort"
-                           fieldTemplate="field"
-                           displayExpr="text"
-                           valueExpr="value"
-                           label="Сортировка по приоритету"
-                           labelMode="static"
-                           class="priority-sort-select-box">
-                <div *dxTemplate="let data of 'field'"
-                     class="select-box-field">
-                    <dx-button [icon]="data.icon"
-                               class="select-box-button"
-                    ></dx-button>
-                    <dx-text-box [value]="data.text"
-                                 [readOnly]="true"
-                    ></dx-text-box>
-                </div>            
-            </dx-select-box>
+            <app-filter-task-template [dataSourceForSelectBox]="dateSelect"
+                                      [formControlNameForSelectBox]="LFilterForm.DATE_SORT"
+                                      labelName="Сортировка по дате"
+                                      className="date-sort-select-box"/>
+            <app-filter-task-template [dataSourceForSelectBox]="prioritiesSortSelect"
+                                      [formControlNameForSelectBox]="LFilterForm.PRIORITY_SORT"
+                                      labelName="Сортировка по приоритету"
+                                      className="priority-sort-select-box"/>
         </div>
-        <dx-autocomplete formControlName="searchField"
+        <dx-autocomplete [formControlName]="LFilterForm.SEARCH"
                          placeholder="Начните вводить текст задачи..."
                          label="Поиск задачи по тексту"
                          labelMode="static"
-                         class="search-task-text-box"
-        ></dx-autocomplete>
+                         class="search-task-text-box"/>
     </div>

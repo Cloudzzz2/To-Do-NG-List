@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class DataService {
-  private readonly http = inject(HttpClient);
+  private readonly _http = inject(HttpClient);
 
   /**
    * Метод получения задач с сервера
    */
   public getTask(): Observable<ITask[]> {
-    return this.http.get<ITask<string>[]>('http://127.0.0.1:3000/items').pipe(
+    return this._http.get<ITask<string>[]>('http://127.0.0.1:3000/items').pipe(
       map((items: ITask<string>[]) => {
         return items.map((item: ITask<string>) => {
           return {
@@ -32,7 +32,7 @@ export class DataService {
    * @param {ITask} task - задача
    */
   public addTask(task: ITask): Observable<ITask> {
-    return <Observable<ITask>>this.http.post(`http://127.0.0.1:3000/items`, JSON.stringify(task), {
+    return this._http.post<ITask>(`http://127.0.0.1:3000/items`, JSON.stringify(task), {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       }
@@ -45,7 +45,7 @@ export class DataService {
    * @param {number} id - айди задачи
    */
   public deleteTask(id: number): Observable<ITask> {
-    return <Observable<ITask>>this.http.delete(`http://127.0.0.1:3000/items/${id}`);
+    return this._http.delete<ITask>(`http://127.0.0.1:3000/items/${id}`);
   };
 
   /**
@@ -54,7 +54,7 @@ export class DataService {
    * @param {ITask} task - задача
    */
   public refreshTask(task: ITask): Observable<ITask> {
-    return <Observable<ITask>>this.http.put(`http://127.0.0.1:3000/items/${task.id}`, JSON.stringify(task), {
+    return this._http.put<ITask>(`http://127.0.0.1:3000/items/${task.id}`, JSON.stringify(task), {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       }
