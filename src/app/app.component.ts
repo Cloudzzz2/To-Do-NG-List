@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-import { RouterModule, RouterOutlet } from '@angular/router';
-=======
 import { RouterModule } from '@angular/router';
->>>>>>> b1fb3c3 (Fixes Commit)
 import { DxButtonModule } from 'devextreme-angular';
 
 @Component({
