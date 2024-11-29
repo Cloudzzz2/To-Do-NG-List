@@ -1,0 +1,44 @@
+<div class="tasks">
+    <div *ngIf="tasks.length === 0; else task"
+         class="text-array-is-empty-container">
+        <p class="text-array-is-empty">Список задач пуст</p>
+    </div>
+    <ng-template #task>
+        <div *ngFor="let elem of tasks | filters : filtersForm.value"
+             class="task-container">
+             <div class="task-area-and-status">
+                <span [ngClass]="elem.taskPriorityValue === EPriority.LOW ? 'priority-text-low' 
+                : elem.taskPriorityValue === EPriority.MEDIUM ? 'priority-text-medium'
+                : 'priority-text-high'">
+                    {{ elem.taskPriorityText | uppercase }}
+                </span>
+                <dx-autocomplete *ngIf="elem.status === EStatus.CANCELED"
+                                (onChange)="editTask(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-canceled"/>
+                <dx-autocomplete *ngIf="elem.status === EStatus.ACTIVE"
+                                (onChange)="editTask(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-active"/>
+                <dx-autocomplete *ngIf="elem.status === EStatus.COMPLETED"
+                                (onChange)="editTask(elem)"
+                                [(value)]="elem.taskText"
+                                class="task-field-completed"/>
+                <span class="cross-check-span">
+                    <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
+                               (onClick)="toUpperStatus(elem)"
+                               icon="check"/>
+                    <dx-button *ngIf="elem.status !== EStatus.CANCELED"
+                               (onClick)="toLowerStatus(elem)"
+                               icon="remove"/>
+                </span>
+                <dx-button (onClick)="deleteTask(elem.id)"
+                           icon="trash"
+                           class="delete-button"/>
+            </div>
+            <div class="date-container">
+                {{ elem.taskDate | date : 'dd.MM.yyyy HH:mm' }}
+            </div>
+        </div>
+    </ng-template>  
+</div>
