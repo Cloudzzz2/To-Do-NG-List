@@ -28,7 +28,7 @@ export class TaskGridComponent {
   public tasks$: Observable<ITask[]> = this._dataService.getTask().pipe(
     map((items: ITask[]) => {
       return items.map((item: ITask) => {
-        let dateToday = new Date(item.taskDate);
+        const dateToday: Date = new Date(item.taskDate);
         return {
           ...item,
           taskDate: `${dateToday.toLocaleDateString()} ${dateToday.getHours()}:${('0' + dateToday.getMinutes()).slice(-2)}`

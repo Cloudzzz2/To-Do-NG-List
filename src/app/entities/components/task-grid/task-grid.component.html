@@ -1,4 +1,4 @@
-<dx-data-grid [dataSource]="(tasks$ || []) | async"
+<dx-data-grid [dataSource]="(tasks$ | async) || []"
               [showBorders]="true"
               [showRowLines]="true"
               [width]="'80%'"

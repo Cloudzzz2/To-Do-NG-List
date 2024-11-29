@@ -11,10 +11,10 @@ import { LTask } from "../labels/task.label";
  * @property {number} STATUS - статус задачи
  * @template T - тип даты
  */
-export interface ITask<T = Date | string> {
+export interface ITask<T = Date> {
     [LTask.ID]: number | null;
     [LTask.TEXT]: string;
-    [LTask.DATE]: T;
+    [LTask.DATE]: T | string;
     [LTask.PRIORITY_TEXT]: string;
     [LTask.PRIORITY]: number;
     [LTask.STATUS]: number;

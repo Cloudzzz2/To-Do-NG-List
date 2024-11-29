@@ -2,6 +2,8 @@
     --color-low: #bb0b0b;
     --color-medium: #eea70f;
     --color-high: #32CD32;
+    --color-completed: rgba(0, 255, 0, 0.3);
+    --color-canceled: rgba(255, 0, 0, 0.3);
 
     .tasks {
         padding-bottom: 30px;
@@ -38,7 +40,9 @@
                 align-items: center;
 
                 .priority-text {
-                    &-low, &-medium, &-high {
+                    &-low, 
+                    &-medium, 
+                    &-high {
                         margin: 0 0 0 30px;
                         width: 100px;
                     }
@@ -55,27 +59,21 @@
                     }
                 }
                 
-                .task-field-canceled {
-                    background-color: rgba(255, 0, 0, 0.3);
-                    width: 85%;
-                    margin: 0 0 0 20px;
-                    min-height: 100px;
-                    height: fit-content;
-                }
-
-                .task-field-active {
-                    width: 85%;
-                    margin: 0 0 0 20px;
-                    min-height: 100px;
-                    height: fit-content;
-                }
-                
-                .task-field-completed {
-                    background-color: rgba(0, 255, 0, 0.3);
-                    width: 85%;
-                    margin: 0 0 0 20px;
-                    min-height: 100px;
-                    height: fit-content;
+                .task-field{
+                    &-canceled,
+                    &-active,
+                    &-completed {
+                        width: 85%;
+                        margin: 0 0 0 20px;
+                        min-height: 100px;
+                        height: fit-content;
+                    }
+                    &-canceled {
+                        background-color: var(--color-canceled);
+                    }
+                    &-completed {
+                        background-color: var(--color-completed);
+                    }
                 }
 
                 .cross-check-span {

@@ -1,6 +1,6 @@
 <div [formGroup]="filtersForm" 
      class="filter-task-container">
-        <div class="sortNFiltersField">
+        <div class="sort-n-filters-field">
             <dx-select-box [dataSource]="prioritiesFilter"
                            [formControlName]="LFilterForm.PRIORITY_FILTER"
                            [valueExpr]="LIcon.VALUE"
@@ -21,11 +21,11 @@
             </div>
         </div>
         <div class="sorts">
-            <app-filter-task-template [dataSourceForSelectBox]="dateSelect"
+            <app-custom-field-select-box [dataSourceForSelectBox]="dateSelect"
                                       [formControlNameForSelectBox]="LFilterForm.DATE_SORT"
                                       labelName="Сортировка по дате"
                                       className="date-sort-select-box"/>
-            <app-filter-task-template [dataSourceForSelectBox]="prioritiesSortSelect"
+            <app-custom-field-select-box [dataSourceForSelectBox]="prioritiesSortSelect"
                                       [formControlNameForSelectBox]="LFilterForm.PRIORITY_SORT"
                                       labelName="Сортировка по приоритету"
                                       className="priority-sort-select-box"/>

@@ -28,13 +28,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class TaskListComponent {
   private readonly _dataService: DataService = inject(DataService);
   private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
-  private readonly destroyRef = inject(DestroyRef); 
+  private readonly _destroyRef: DestroyRef = inject(DestroyRef);
 
   @Input({required: true})
   public tasks: ITask[] = [];
 
   @Output()
-  public refreshTask = new EventEmitter();
+  public refreshTask: EventEmitter<void> = new EventEmitter();
 
   public filtersForm = this._formBuilderService.filtersForm;
 
@@ -49,7 +49,7 @@ export class TaskListComponent {
   public toLowerStatus(task: ITask): void {
     task.status -= 1;
     this._dataService.refreshTask(task).pipe(
-      takeUntilDestroyed(this.destroyRef)
+      takeUntilDestroyed(this._destroyRef)
     ).subscribe();
   }
 
@@ -61,7 +61,7 @@ export class TaskListComponent {
   public toUpperStatus(task: ITask): void {
     task.status += 1;
     this._dataService.refreshTask(task).pipe(
-      takeUntilDestroyed(this.destroyRef)
+      takeUntilDestroyed(this._destroyRef)
     ).subscribe();
   }
 
@@ -73,7 +73,7 @@ export class TaskListComponent {
   public deleteTask(id: number | null): void {
     if (id !== null) {
       this._dataService.deleteTask(id).pipe(
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this._destroyRef)
       ).subscribe(() =>  this.refreshTask.emit());
     }
   }
@@ -85,7 +85,7 @@ export class TaskListComponent {
    */
   public editTask(task: ITask): void {
     this._dataService.refreshTask(task).pipe(
-      takeUntilDestroyed(this.destroyRef)
+      takeUntilDestroyed(this._destroyRef)
     ).subscribe();
   }
 }

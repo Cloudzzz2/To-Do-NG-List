@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnDestroy, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, OnDestroy, Output } from '@angular/core';
 import { FormBuilderService } from '../../../../../services/form-builder.service';
 import { ITask } from '../../../../../interfaces/task.interface';
 import { DataService } from '../../../../../services/data.service';
@@ -6,10 +6,10 @@ import { AppLib } from '../../../../../libs/app.lib';
 import { LTask } from 'src/app/entities/labels/task.label';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LInputForm } from 'src/app/entities/labels/input-form.label';
-import { Subject, takeUntil } from 'rxjs';
 import { IItem } from 'src/app/entities/interfaces/item.interface';
 import { LIcon } from 'src/app/entities/labels/icon.labels';
 import { DxSelectBoxModule, DxTextBoxModule, DxButtonModule } from 'devextreme-angular';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-add-task',
@@ -23,14 +23,14 @@ import { DxSelectBoxModule, DxTextBoxModule, DxButtonModule } from 'devextreme-a
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
 })
-export class AddTaskComponent implements OnDestroy {
+export class AddTaskComponent {
   private readonly _dataService: DataService = inject(DataService);
   private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
+  private readonly _destroyRef: DestroyRef = inject(DestroyRef); 
+
 
   @Output()
-  public refreshTask: EventEmitter<any> = new EventEmitter();
-
-  public destroy$$: Subject<void> = new Subject();
+  public refreshTask: EventEmitter<void> = new EventEmitter();
 
   public priorities: IItem[] = AppLib.priorityVariants;
   public inputForm = this._formBuilderService.getInputForm();
@@ -38,11 +38,6 @@ export class AddTaskComponent implements OnDestroy {
 
   protected readonly LIcon: typeof LIcon = LIcon;
   protected readonly LInputForm: typeof LInputForm = LInputForm;
-
-  public ngOnDestroy(): void {
-    this.destroy$$.next();
-    this.destroy$$.complete();
-  }
 
   /**
    * Метод добавления задачи
@@ -59,7 +54,7 @@ export class AddTaskComponent implements OnDestroy {
         [LTask.STATUS]: AppLib.defaultStatus
       };
       this._dataService.addTask(this.task).pipe(
-        takeUntil(this.destroy$$)
+        takeUntilDestroyed(this._destroyRef)
       ).subscribe(() => this.refreshTask.emit());
       this.inputForm.setValue({
         priority: this.inputForm.controls[LInputForm.PRIORITY].value,

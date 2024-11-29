@@ -7,20 +7,20 @@ import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
 import { IItem } from 'src/app/entities/interfaces/item.interface';
 import { IIconItem } from 'src/app/entities/interfaces/icon-item.interface';
 import { LIcon } from 'src/app/entities/labels/icon.labels';
-import { FilterTaskTemplateComponent } from './filter-task-template/filter-task-template/filter-task-template.component';
+import { CustomFieldSelectBoxComponent } from './entities/components/custom-field-select-box/custom-field-select-box';
 
 
 @Component({
   selector: 'app-filter-task',
   standalone: true,
   imports: [
-    FilterTaskTemplateComponent,
+    CustomFieldSelectBoxComponent,
     DxSelectBoxModule,
     DxCheckBoxModule,
     DxButtonModule,
     DxAutocompleteModule,
     DxTextBoxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './filter-task.component.html',
   styleUrls: ['./filter-task.component.scss']

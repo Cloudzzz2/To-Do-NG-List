@@ -2,11 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
 import { IIconItem } from 'src/app/entities/interfaces/icon-item.interface';
+import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
 import { LIcon } from 'src/app/entities/labels/icon.labels';
 import { FormBuilderService } from 'src/app/entities/services/form-builder.service';
 
 @Component({
-  selector: 'app-filter-task-template',
+  selector: 'app-custom-field-select-box',
   standalone: true,
   imports: [
     DxSelectBoxModule,
@@ -16,15 +17,15 @@ import { FormBuilderService } from 'src/app/entities/services/form-builder.servi
     DxTextBoxModule,
     ReactiveFormsModule
   ],
-  templateUrl: './filter-task-template.component.html',
-  styleUrls: ['./filter-task-template.component.scss']
+  templateUrl: './custom-field-select-box.html',
+  styleUrls: ['./custom-field-select-box.scss']
 })
-export class FilterTaskTemplateComponent {
+export class CustomFieldSelectBoxComponent {
   @Input({required:true})
   public dataSourceForSelectBox: IIconItem[] = [];
 
   @Input({required:true})
-  public formControlNameForSelectBox: string = '';
+  public formControlNameForSelectBox: LFilterForm = <LFilterForm>{};
 
   @Input({required:true})
   public labelName: string = '';

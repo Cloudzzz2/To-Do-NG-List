@@ -27,9 +27,9 @@ export abstract class AppLib {
 
   /**
    * Значения сортировки по дате
-   * @property { number } VALUE - числовое значение сортировки
-   * @property { string } TEXT - текст сортировки
-   * @property { string } ICON - изображение(иконка) сортировки
+   * @property {number} VALUE - числовое значение сортировки
+   * @property {string} TEXT - текст сортировки
+   * @property {string} ICON - изображение(иконка) сортировки
    */
   public static readonly dateSortVariants: IIconItem[] = [
       {
@@ -46,8 +46,8 @@ export abstract class AppLib {
 
   /**
    * Значения вариантов приоритета
-   * @property { number } VALUE - числовое значение приоритета
-   * @property { string } TEXT - текст сортировки
+   * @property {number} VALUE - числовое значение приоритета
+   * @property {string} TEXT - текст сортировки
    */
   public static readonly priorityVariants: IItem[] = [
     {
@@ -66,8 +66,8 @@ export abstract class AppLib {
 
   /**
    * Значения фильтрации по приоритету
-   * @property { number } VALUE - числовое значение варианта фильтрации
-   * @property { string } TEXT - текст варианта фильтрации
+   * @property {number} VALUE - числовое значение варианта фильтрации
+   * @property {string} TEXT - текст варианта фильтрации
    */
   public static readonly priorityFilterVariants: IItem[] = [
     {
@@ -90,9 +90,9 @@ export abstract class AppLib {
 
     /**
    * Значения сортировки по приоритету
-   * @property { number } VALUE - числовое значение сортировки
-   * @property { string } TEXT - текст сортировки
-   * @property { string } ICON - изображение(иконка) сортировки
+   * @property {number} VALUE - числовое значение сортировки
+   * @property {string} TEXT - текст сортировки
+   * @property {string} ICON - изображение(иконка) сортировки
    */
   public static readonly prioritySortVariants: IIconItem[] = [
     {
