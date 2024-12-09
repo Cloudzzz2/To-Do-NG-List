@@ -31,7 +31,7 @@ export class FilterTaskComponent {
   public filtersForm = this._formBuilderService.filtersForm;
   public prioritiesFilter: IItem[] = AppLib.priorityFilterVariants;
   public dates: IIconItem[] = AppLib.dateSortVariants;
-  public prioritiesSortSelect: IIconItem[] = AppLib.prioritySortVariants; 
+  public priorities: IIconItem[] = AppLib.prioritySortVariants; 
 
   protected readonly LFilterForm: typeof LFilterForm = LFilterForm;
   protected readonly LIcon: typeof LIcon = LIcon;
