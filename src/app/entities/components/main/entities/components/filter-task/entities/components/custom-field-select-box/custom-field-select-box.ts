@@ -21,6 +21,8 @@ import { FormBuilderService } from 'src/app/entities/services/form-builder.servi
   styleUrls: ['./custom-field-select-box.scss']
 })
 export class CustomFieldSelectBoxComponent {
+  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
+
   @Input({required:true})
   public dataSourceForSelectBox: IIconItem[] = [];
 
@@ -33,7 +35,6 @@ export class CustomFieldSelectBoxComponent {
   @Input({required:true})
   public className: string = '';
 
-  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
   
   public filtersForm = this._formBuilderService.filtersForm;
 

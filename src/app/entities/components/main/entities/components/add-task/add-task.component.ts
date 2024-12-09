@@ -44,7 +44,7 @@ export class AddTaskComponent {
    */
   public addTask(): void {
     if (this.inputForm.valid) {
-      let priorityText: IItem | undefined = AppLib.priorityVariants.find((item) => item.value === this.inputForm.controls['priority'].value);
+      const priorityText: IItem | undefined = AppLib.priorityVariants.find((item) => item.value === this.inputForm.controls['priority'].value);
       this.task = {
         [LTask.ID]: null,
         [LTask.TEXT]: <string>this.inputForm.controls[LInputForm.INPUT].value,

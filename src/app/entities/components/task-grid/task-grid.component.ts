@@ -25,7 +25,7 @@ export class TaskGridComponent {
 
   protected readonly LTask: typeof LTask = LTask;
 
-  public tasks$: Observable<ITask[]> = this._dataService.getTask().pipe(
+  public tasks$: Observable<ITask<string>[]> = this._dataService.getTask().pipe(
     map((items: ITask[]) => {
       return items.map((item: ITask) => {
         const dateToday: Date = new Date(item.taskDate);

@@ -21,14 +21,14 @@
             </div>
         </div>
         <div class="sorts">
-            <app-custom-field-select-box [dataSourceForSelectBox]="dateSelect"
-                                      [formControlNameForSelectBox]="LFilterForm.DATE_SORT"
-                                      labelName="Сортировка по дате"
-                                      className="date-sort-select-box"/>
+            <app-custom-field-select-box [dataSourceForSelectBox]="dates"
+                                         [formControlNameForSelectBox]="LFilterForm.DATE_SORT"
+                                         labelName="Сортировка по дате"
+                                         className="date-sort-select-box"/>
             <app-custom-field-select-box [dataSourceForSelectBox]="prioritiesSortSelect"
-                                      [formControlNameForSelectBox]="LFilterForm.PRIORITY_SORT"
-                                      labelName="Сортировка по приоритету"
-                                      className="priority-sort-select-box"/>
+                                         [formControlNameForSelectBox]="LFilterForm.PRIORITY_SORT"
+                                         labelName="Сортировка по приоритету"
+                                         className="priority-sort-select-box"/>
         </div>
         <dx-autocomplete [formControlName]="LFilterForm.SEARCH"
                          placeholder="Начните вводить текст задачи..."

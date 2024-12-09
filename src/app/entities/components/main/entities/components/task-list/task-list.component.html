@@ -12,18 +12,18 @@
                 : 'priority-text-high'">
                     {{ elem.taskPriorityText | uppercase }}
                 </span>
-                <dx-autocomplete *ngIf="elem.status === EStatus.CANCELED"
-                                (onChange)="editTask(elem)"
-                                [(value)]="elem.taskText"
-                                class="task-field-canceled"/>
-                <dx-autocomplete *ngIf="elem.status === EStatus.ACTIVE"
-                                (onChange)="editTask(elem)"
-                                [(value)]="elem.taskText"
-                                class="task-field-active"/>
-                <dx-autocomplete *ngIf="elem.status === EStatus.COMPLETED"
-                                (onChange)="editTask(elem)"
-                                [(value)]="elem.taskText"
-                                class="task-field-completed"/>
+                <dx-autocomplete [(value)]="elem.taskText"
+                                 *ngIf="elem.status === EStatus.CANCELED"
+                                 (onChange)="editTask(elem)"
+                                 class="task-field-canceled"/>
+                <dx-autocomplete [(value)]="elem.taskText"
+                                 *ngIf="elem.status === EStatus.ACTIVE"
+                                 (onChange)="editTask(elem)"
+                                 class="task-field-active"/>
+                <dx-autocomplete [(value)]="elem.taskText"
+                                 *ngIf="elem.status === EStatus.COMPLETED"
+                                 (onChange)="editTask(elem)"
+                                 class="task-field-completed"/>
                 <span class="cross-check-span">
                     <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
                                (onClick)="toUpperStatus(elem)"

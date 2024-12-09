@@ -14,7 +14,7 @@ import { LTask } from "../labels/task.label";
 export interface ITask<T = Date> {
     [LTask.ID]: number | null;
     [LTask.TEXT]: string;
-    [LTask.DATE]: T | string;
+    [LTask.DATE]: T;
     [LTask.PRIORITY_TEXT]: string;
     [LTask.PRIORITY]: number;
     [LTask.STATUS]: number;
