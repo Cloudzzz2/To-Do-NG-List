@@ -1,4 +1,4 @@
-import { Component, DestroyRef, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { DataService } from '../../../../../services/data.service';
 import { FormBuilderService } from '../../../../../services/form-builder.service';
 import { ITask } from '../../../../../interfaces/task.interface';
@@ -27,16 +27,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class TaskListComponent {
   private readonly _dataService: DataService = inject(DataService);
-  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
   private readonly _destroyRef: DestroyRef = inject(DestroyRef);
 
   @Input({required: true})
   public tasks: ITask[] = [];
 
+  @Input({required: true})
+  public filtersFormData: any;
+
   @Output()
   public refreshTask: EventEmitter<void> = new EventEmitter();
 
-  public filtersForm = this._formBuilderService.filtersForm;
 
   protected readonly EPriority: typeof EPriority = EPriority;
   protected readonly EStatus: typeof EStatus = EStatus;

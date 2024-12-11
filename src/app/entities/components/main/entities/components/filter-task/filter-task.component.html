@@ -22,11 +22,11 @@
         </div>
         <div class="sorts">
             <app-custom-field-select-box [dataSourceForSelectBox]="dates"
-                                         [formControlNameForSelectBox]="LFilterForm.DATE_SORT"
+                                         [formControlForSelectBox]="filtersForm.controls[LFilterForm.DATE_SORT]"
                                          labelName="Сортировка по дате"
                                          className="date-sort-select-box"/>
             <app-custom-field-select-box [dataSourceForSelectBox]="priorities"
-                                         [formControlNameForSelectBox]="LFilterForm.PRIORITY_SORT"
+                                         [formControlForSelectBox]="filtersForm.controls[LFilterForm.PRIORITY_SORT]"
                                          labelName="Сортировка по приоритету"
                                          className="priority-sort-select-box"/>
         </div>

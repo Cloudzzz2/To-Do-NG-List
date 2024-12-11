@@ -1,6 +1,6 @@
-<div [formGroup]="filtersForm">
+<div>
     <dx-select-box [dataSource]="dataSourceForSelectBox"
-                   [formControlName]="formControlNameForSelectBox"
+                   [formControl]="formControlForSelectBox"
                    [displayExpr]="LIcon.TEXT"
                    [valueExpr]="LIcon.VALUE"
                    [label]="labelName"

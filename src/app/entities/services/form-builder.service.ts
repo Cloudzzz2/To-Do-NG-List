@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AppLib } from '../libs/app.lib';
 import { LFilterForm } from '../labels/filter-form.label';
 import { LInputForm } from '../labels/input-form.label';
@@ -33,7 +33,8 @@ export class FormBuilderService {
    * @property PRIORITY_SORT - список сортировок по приоритету
    * @property SEARCH - текстовое поле ввода для поиска задачи
    */
-  public filtersForm = this._formBuilder.nonNullable.group({
+  public getfiltersForm() {
+    return this._formBuilder.group({
     [LFilterForm.PRIORITY_FILTER]: this._formBuilder.control(AppLib.priorityFilterVariants[0].value),
     [LFilterForm.STATUS_ACTIVE]: this._formBuilder.control(true),
     [LFilterForm.STATUS_CANCELED]: this._formBuilder.control(true),
@@ -42,6 +43,10 @@ export class FormBuilderService {
     [LFilterForm.PRIORITY_SORT]: this._formBuilder.control(AppLib.defaultPrioritySort),
     [LFilterForm.SEARCH]: this._formBuilder.control<string>('', [Validators.required]),
   });
+  }
 
+  public getControl(): FormControl {
+    return this._formBuilder.control(null);
+  }
 
 }

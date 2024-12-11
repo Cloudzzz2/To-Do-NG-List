@@ -4,7 +4,7 @@
         <p class="text-array-is-empty">Список задач пуст</p>
     </div>
     <ng-template #task>
-        <div *ngFor="let elem of tasks | filters : filtersForm.value"
+        <div *ngFor="let elem of tasks | filters : filtersFormData!"
              class="task-container">
              <div class="task-area-and-status">
                 <span [ngClass]="elem.taskPriorityValue === EPriority.LOW ? 'priority-text-low' 
@@ -12,18 +12,10 @@
                 : 'priority-text-high'">
                     {{ elem.taskPriorityText | uppercase }}
                 </span>
-                <dx-autocomplete *ngIf="elem.status === EStatus.CANCELED"
+                <dx-autocomplete [ngClass]="elem.status === EStatus.CANCELED ? 'task-field-canceled' 
+                                 : elem.status === EStatus.ACTIVE ? 'task-field-active' : 'task-field-completed'"
                                  [(value)]="elem.taskText"
-                                 (onChange)="editTask(elem)"
-                                 class="task-field-canceled"/>
-                <dx-autocomplete *ngIf="elem.status === EStatus.ACTIVE"
-                                 [(value)]="elem.taskText"
-                                 (onChange)="editTask(elem)"
-                                 class="task-field-active"/>
-                <dx-autocomplete *ngIf="elem.status === EStatus.COMPLETED"
-                                 [(value)]="elem.taskText"
-                                 (onChange)="editTask(elem)"
-                                 class="task-field-completed"/>
+                                 (onChange)="editTask(elem)"/>
                 <span class="cross-check-span">
                     <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
                                (onClick)="toUpperStatus(elem)"

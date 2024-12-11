@@ -8,6 +8,7 @@ import { AsyncPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ITask } from '../../interfaces/task.interface';
+import { IFilterForm } from '../../interfaces/filter-form.interface';
 
 @Component({
   selector: 'app-main',
@@ -25,13 +26,24 @@ import { ITask } from '../../interfaces/task.interface';
 })
 export class MainComponent {
   private readonly _dataService: DataService = inject(DataService);
+  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
+
 
   public tasks$: Observable<ITask[]> = this._dataService.getTask();
+
+  public filtersFormData: IFilterForm | null = null; 
 
   /**
    * Метод получения списка задач
    */
   public getTask(): void {
     this.tasks$ = this._dataService.getTask();
+  }
+
+  /**
+   * Метод получения значения полей формы
+   */
+  public getFiltersForm(filtersForm: IFilterForm) {
+    this.filtersFormData = filtersForm;
   }
 }

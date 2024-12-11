@@ -18,52 +18,57 @@ export class FiltersPipe implements PipeTransform {
    * @returns
    * 
    */
-  public transform(items:ITask[], filtersFormValue: any): ITask[] {
-    switch (filtersFormValue.priorityFilter) {
-      // Фильтр по приоритету
-      case (EPriority.LOW): {
-        items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.LOW);
-        break;
-      }
-      case (EPriority.MEDIUM): {
-        items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.MEDIUM);
-        break;
-      }
-      case (EPriority.HIGH): {
-        items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.HIGH);
-        break;
-      }
-    }
-
-    // Фильтр по статусу
-    if (!filtersFormValue.statusFilterActive) {
-      items = items.filter((item: ITask) => item.status !== EStatus.ACTIVE);
-    }
-    if (!filtersFormValue.statusFilterCanceled) {
-      items = items.filter((item: ITask) => item.status !== EStatus.CANCELED);
-    }
-    if (!filtersFormValue.statusFilterCompleted) {
-      items = items.filter((item: ITask) => item.status !== EStatus.COMPLETED);
-    }
-
-    // Сортировка по дате
-    if (filtersFormValue.dateSort === AppLib.defaultDateSort) {
-      items = items.sort((a: ITask, b: ITask) => Number(a.taskDate) - Number(b.taskDate));
-    } else {
-      items = items.sort((a: ITask, b: ITask) => Number(b.taskDate) - Number(a.taskDate));
-    }
-
-    // Сортировка по приоритету
-    if (filtersFormValue.prioritySort === AppLib.defaultPrioritySort) {
+  public transform(items:ITask[], filtersFormValue: IFilterForm | null): ITask[] {
+    if (filtersFormValue === null) {
       items = items.sort((a: ITask, b: ITask) => b.taskPriorityValue - a.taskPriorityValue);
+      return items
     } else {
-      items = items.sort((a: ITask, b: ITask) => a.taskPriorityValue - b.taskPriorityValue);
-    }
-
-    // Поиск задачи по тексту
-    if (filtersFormValue.searchField.length >= 3) {
-      items = items.filter((item: ITask) => item.taskText.toLowerCase().includes(filtersFormValue.searchField.toLowerCase()));
-    }
-    return items;
+      switch (filtersFormValue.priorityFilter) {
+        // Фильтр по приоритету
+        case (EPriority.LOW): {
+          items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.LOW);
+          break;
+        }
+        case (EPriority.MEDIUM): {
+          items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.MEDIUM);
+          break;
+        }
+        case (EPriority.HIGH): {
+          items = items.filter((item: ITask) => item.taskPriorityValue === EPriority.HIGH);
+          break;
+        }
+      }
+  
+      // Фильтр по статусу
+      if (!filtersFormValue.statusFilterActive) {
+        items = items.filter((item: ITask) => item.status !== EStatus.ACTIVE);
+      }
+      if (!filtersFormValue.statusFilterCanceled) {
+        items = items.filter((item: ITask) => item.status !== EStatus.CANCELED);
+      }
+      if (!filtersFormValue.statusFilterCompleted) {
+        items = items.filter((item: ITask) => item.status !== EStatus.COMPLETED);
+      }
+  
+      // Сортировка по дате
+      if (filtersFormValue.dateSort === AppLib.defaultDateSort) {
+        items = items.sort((a: ITask, b: ITask) => Number(a.taskDate) - Number(b.taskDate));
+      } else {
+        items = items.sort((a: ITask, b: ITask) => Number(b.taskDate) - Number(a.taskDate));
+      }
+  
+      // Сортировка по приоритету
+      if (filtersFormValue.prioritySort === AppLib.defaultPrioritySort) {
+        items = items.sort((a: ITask, b: ITask) => b.taskPriorityValue - a.taskPriorityValue);
+      } else {
+        items = items.sort((a: ITask, b: ITask) => a.taskPriorityValue - b.taskPriorityValue);
+      }
+  
+      // Поиск задачи по тексту
+      if (filtersFormValue.searchField && filtersFormValue.searchField.length >= 3) {
+        items = items.filter((item: ITask) => item.taskText.toLowerCase().includes(filtersFormValue.searchField!.toLowerCase()));
+      }
+      return items;
+    }    
   }
 }

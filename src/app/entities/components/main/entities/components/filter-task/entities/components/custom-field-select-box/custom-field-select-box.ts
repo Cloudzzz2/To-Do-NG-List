@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
 import { IIconItem } from 'src/app/entities/interfaces/icon-item.interface';
 import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
@@ -27,16 +27,13 @@ export class CustomFieldSelectBoxComponent {
   public dataSourceForSelectBox: IIconItem[] = [];
 
   @Input({required:true})
-  public formControlNameForSelectBox: LFilterForm = <LFilterForm>{};
+  public formControlForSelectBox: FormControl = this._formBuilderService.getControl();
 
   @Input({required:true})
   public labelName: string = '';
 
   @Input({required:true})
   public className: string = '';
-
-  
-  public filtersForm = this._formBuilderService.filtersForm;
 
   protected readonly LIcon: typeof LIcon = LIcon;
 }
