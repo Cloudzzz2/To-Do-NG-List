@@ -3,13 +3,13 @@ import { LFilterForm } from "../labels/filter-form.label";
 /**
  * Форма фильтрации
  * 
- * @property {string} PRIORITY_FILTER - фильтр по приоритету
- * @property {boolean} STATUS_ACTIVE - чекбокс, статус "активные"
- * @property {boolean} STATUS_CANCELED - чекбокс, статус "отмененный"
- * @property {boolean} STATUS_COMPLETED - чекбокс, статус "завершенные"
- * @property {number} DATE_SORT - сортировка по дате
- * @property {number} PRIORITY_SORT - сортировка по приоритету
- * @property {string} SEARCH - поле поиска задачи
+ * @property {string | null} PRIORITY_FILTER - фильтр по приоритету
+ * @property {boolean | null} STATUS_ACTIVE - чекбокс, статус "активные"
+ * @property {boolean | null} STATUS_CANCELED - чекбокс, статус "отмененный"
+ * @property {boolean | null} STATUS_COMPLETED - чекбокс, статус "завершенные"
+ * @property {number | null} DATE_SORT - сортировка по дате
+ * @property {number | null} PRIORITY_SORT - сортировка по приоритету
+ * @property {string | null} SEARCH - поле поиска задачи
  */
 export interface IFilterForm {
     [LFilterForm.PRIORITY_FILTER]: number | null;

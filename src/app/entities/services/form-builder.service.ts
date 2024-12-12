@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppLib } from '../libs/app.lib';
 import { LFilterForm } from '../labels/filter-form.label';
 import { LInputForm } from '../labels/input-form.label';
+import { IFilterForm } from '../interfaces/filter-form.interface';
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class FormBuilderService {
    * @property PRIORITY_SORT - список сортировок по приоритету
    * @property SEARCH - текстовое поле ввода для поиска задачи
    */
-  public getfiltersForm() {
+  public get filtersForm() {
     return this._formBuilder.group({
     [LFilterForm.PRIORITY_FILTER]: this._formBuilder.control(AppLib.priorityFilterVariants[0].value),
     [LFilterForm.STATUS_ACTIVE]: this._formBuilder.control(true),
@@ -45,8 +46,10 @@ export class FormBuilderService {
   });
   }
 
-  public getControl(): FormControl {
+  /**
+   * Метод создания пустой формы
+   */
+  public get Control(): FormControl<number | null> {
     return this._formBuilder.control(null);
   }
-
 }

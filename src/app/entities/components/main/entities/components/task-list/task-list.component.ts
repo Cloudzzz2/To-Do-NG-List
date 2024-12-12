@@ -8,6 +8,7 @@ import { DxAutocompleteModule, DxButtonModule } from 'devextreme-angular';
 import { DatePipe, NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { FiltersPipe } from 'src/app/entities/pipes/filters.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IFilterForm } from 'src/app/entities/interfaces/filter-form.interface';
 
 @Component({
   selector: 'app-task-list',
@@ -33,7 +34,7 @@ export class TaskListComponent {
   public tasks: ITask[] = [];
 
   @Input({required: true})
-  public filtersFormData: any;
+  public filtersFormData: IFilterForm | null = null;
 
   @Output()
   public refreshTask: EventEmitter<void> = new EventEmitter();

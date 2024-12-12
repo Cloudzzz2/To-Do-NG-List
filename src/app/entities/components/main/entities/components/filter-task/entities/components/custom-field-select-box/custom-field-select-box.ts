@@ -27,7 +27,7 @@ export class CustomFieldSelectBoxComponent {
   public dataSourceForSelectBox: IIconItem[] = [];
 
   @Input({required:true})
-  public formControlForSelectBox: FormControl = this._formBuilderService.getControl();
+  public formControlForSelectBox: FormControl<number | null> = this._formBuilderService.Control;
 
   @Input({required:true})
   public labelName: string = '';

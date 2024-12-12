@@ -4,7 +4,7 @@
         <p class="text-array-is-empty">Список задач пуст</p>
     </div>
     <ng-template #task>
-        <div *ngFor="let elem of tasks | filters : filtersFormData!"
+        <div *ngFor="let elem of tasks | filters : filtersFormData"
              class="task-container">
              <div class="task-area-and-status">
                 <span [ngClass]="elem.taskPriorityValue === EPriority.LOW ? 'priority-text-low' 

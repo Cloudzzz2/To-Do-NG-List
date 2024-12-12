@@ -42,8 +42,9 @@ export class MainComponent {
 
   /**
    * Метод получения значения полей формы
+   * @param {IFilterForm} filtersForm - значения полей формы
    */
-  public getFiltersForm(filtersForm: IFilterForm) {
+  public getFiltersForm(filtersForm: IFilterForm): void {
     this.filtersFormData = filtersForm;
   }
 }
