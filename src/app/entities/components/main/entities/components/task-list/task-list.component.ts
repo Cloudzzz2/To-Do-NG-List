@@ -1,6 +1,5 @@
-import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Input, Output } from '@angular/core';
 import { DataService } from '../../../../../services/data.service';
-import { FormBuilderService } from '../../../../../services/form-builder.service';
 import { ITask } from '../../../../../interfaces/task.interface';
 import { EPriority } from '../../../../../enums/priority.enum';
 import { EStatus } from 'src/app/entities/enums/status.enum';
@@ -48,20 +47,12 @@ export class TaskListComponent {
    * 
    * @param {ITask} task - задача
    */
-  public toLowerStatus(task: ITask): void {
-    task.status -= 1;
-    this._dataService.refreshTask(task).pipe(
-      takeUntilDestroyed(this._destroyRef)
-    ).subscribe();
-  }
-
-  /**
-   * Метод повышения статуса задачи
-   * 
-   * @param {ITask} task - задача
-   */
-  public toUpperStatus(task: ITask): void {
-    task.status += 1;
+  public changeStatus(task: ITask, upStatus: boolean): void {
+    if (upStatus === true) {
+      task.status += 1;
+    } else {
+      task.status -= 1;
+    }
     this._dataService.refreshTask(task).pipe(
       takeUntilDestroyed(this._destroyRef)
     ).subscribe();

@@ -3,7 +3,7 @@ import { LFilterForm } from "../labels/filter-form.label";
 /**
  * Форма фильтрации
  * 
- * @property {string | null} PRIORITY_FILTER - фильтр по приоритету
+ * @property {number | null} PRIORITY_FILTER - фильтр по приоритету
  * @property {boolean | null} STATUS_ACTIVE - чекбокс, статус "активные"
  * @property {boolean | null} STATUS_CANCELED - чекбокс, статус "отмененный"
  * @property {boolean | null} STATUS_COMPLETED - чекбокс, статус "завершенные"

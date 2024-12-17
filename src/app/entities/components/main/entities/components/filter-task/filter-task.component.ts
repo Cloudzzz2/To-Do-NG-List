@@ -11,7 +11,6 @@ import { CustomFieldSelectBoxComponent } from './entities/components/custom-fiel
 import { IFilterForm } from 'src/app/entities/interfaces/filter-form.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-
 @Component({
   selector: 'app-filter-task',
   standalone: true,

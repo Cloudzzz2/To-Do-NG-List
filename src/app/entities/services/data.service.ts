@@ -24,7 +24,7 @@ export class DataService {
         })
       })
     );
-  };
+  }
 
   /**
    * Метод добавления задачи
@@ -37,7 +37,7 @@ export class DataService {
         'Content-Type': 'application/json;charset=utf-8'
       }
     });
-  };
+  }
 
   /**
    * Метод удаления задачи
@@ -46,7 +46,7 @@ export class DataService {
    */
   public deleteTask(id: number): Observable<ITask> {
     return this._http.delete<ITask>(`http://127.0.0.1:3000/items/${id}`);
-  };
+  }
 
   /**
    * Метод обновления задачи
@@ -60,4 +60,4 @@ export class DataService {
       }
     });
   };
-};
+}

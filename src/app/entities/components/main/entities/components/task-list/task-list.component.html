@@ -18,10 +18,10 @@
                                  (onChange)="editTask(elem)"/>
                 <span class="cross-check-span">
                     <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
-                               (onClick)="toUpperStatus(elem)"
+                               (onClick)="changeStatus(elem, true)"
                                icon="check"/>
                     <dx-button *ngIf="elem.status !== EStatus.CANCELED"
-                               (onClick)="toLowerStatus(elem)"
+                               (onClick)="changeStatus(elem, false)"
                                icon="remove"/>
                 </span>
                 <dx-button (onClick)="deleteTask(elem.id)"

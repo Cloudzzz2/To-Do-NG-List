@@ -1,4 +1,4 @@
-import { Component, DestroyRef, EventEmitter, inject, OnDestroy, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilderService } from '../../../../../services/form-builder.service';
 import { ITask } from '../../../../../interfaces/task.interface';
 import { DataService } from '../../../../../services/data.service';
@@ -33,7 +33,7 @@ export class AddTaskComponent {
   public refreshTask: EventEmitter<void> = new EventEmitter();
 
   public priorities: IItem[] = AppLib.priorityVariants;
-  public inputForm = this._formBuilderService.getInputForm();
+  public inputForm = this._formBuilderService.inputForm;
   public task: ITask = <ITask>{};
 
   protected readonly LIcon: typeof LIcon = LIcon;

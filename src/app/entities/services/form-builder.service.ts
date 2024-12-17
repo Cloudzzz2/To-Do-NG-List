@@ -1,10 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AppLib } from '../libs/app.lib';
 import { LFilterForm } from '../labels/filter-form.label';
 import { LInputForm } from '../labels/input-form.label';
-import { IFilterForm } from '../interfaces/filter-form.interface';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +15,7 @@ export class FormBuilderService {
    * @property PRIORITY - приоритет задачи
    * @property INPUT - текстовое поле ввода
    */
-  public getInputForm() {
+  public get inputForm() {
     return this._formBuilder.group({
       [LInputForm.PRIORITY]: this._formBuilder.control(AppLib.priorityVariants[1].value),
       [LInputForm.INPUT]: this._formBuilder.control('', [Validators.required, Validators.minLength(3)])
@@ -47,9 +45,9 @@ export class FormBuilderService {
   }
 
   /**
-   * Метод создания пустой формы
+   * Метод создания пустого контрола
    */
-  public get Control(): FormControl<number | null> {
+  public get сontrol(): FormControl<number | null> {
     return this._formBuilder.control(null);
   }
-}
+  }
