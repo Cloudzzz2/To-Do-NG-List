@@ -43,12 +43,13 @@ export class TaskListComponent {
   protected readonly EStatus: typeof EStatus = EStatus;
 
   /**
-   * Метод понижения статуса задачи
+   * Метод изменения статуса задачи
    * 
    * @param {ITask} task - задача
+   * @param {boolean} upStatus - значение статуса
    */
   public changeStatus(task: ITask, upStatus: boolean): void {
-    if (upStatus === true) {
+    if (upStatus) {
       task.status += 1;
     } else {
       task.status -= 1;
