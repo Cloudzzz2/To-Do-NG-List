@@ -1,0 +1,7 @@
+<div class="main-wrapp">
+    <app-add-task (refreshTask)="getTask()"/>
+    <app-filter-task (filtersFormData)="getFiltersForm($event)"/>
+    <app-task-list [tasks]="(tasks$ | async) || []"
+                   [filtersFormData]="filtersFormData"
+                   (refreshTask)="getTask()"/>
+</div>

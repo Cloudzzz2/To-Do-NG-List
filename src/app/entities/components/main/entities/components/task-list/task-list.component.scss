@@ -1,0 +1,99 @@
+:host {
+    --color-low: #bb0b0b;
+    --color-medium: #eea70f;
+    --color-high: #32CD32;
+    --color-completed: rgba(0, 255, 0, 0.3);
+    --color-canceled: rgba(255, 0, 0, 0.3);
+
+    .tasks {
+        padding-bottom: 30px;
+        margin: 30px auto 0 auto;
+        width: 1000px;
+        min-height: 100px;
+        max-height: 700px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        height: fit-content;
+        border: 2px solid black;
+        border-radius: 5px;
+
+        .text-array-is-empty-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+            height: 100px;
+
+            .text-array-is-empty {
+                margin: auto 0;
+                text-align: center;
+                color: black;
+            }
+        }
+
+        .task-container {
+            margin: 30px 0;
+
+            .task-area-and-status {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .priority-text {
+                    &-low, 
+                    &-medium, 
+                    &-high {
+                        margin: 0 0 0 30px;
+                        width: 100px;
+                    }
+                    &-low {
+                        color: var(--color-low);
+                    }
+                    
+                    &-medium {
+                        color: var(--color-medium);
+                    }
+                    
+                    &-high {
+                        color: var(--color-high);
+                    }
+                }
+                
+                .task-field{
+                    &-canceled,
+                    &-active,
+                    &-completed {
+                        width: 85%;
+                        margin: 0 0 0 20px;
+                        min-height: 100px;
+                        height: fit-content;
+                    }
+                    &-canceled {
+                        background-color: var(--color-canceled);
+                    }
+                    &-completed {
+                        background-color: var(--color-completed);
+                    }
+                }
+
+                .cross-check-span {
+                    position: relative;
+                    border-spacing: 10px;
+                    display: grid;
+                    grid-column: inherit;
+                    margin-left: 10px;
+                    height: 72px;
+                    width: 62px;
+                }
+
+                .delete-button {
+                    margin: 0 30px 0 10px;
+                }
+            }
+
+            .date-container {
+                margin: 10px 0 0 140px;
+            }
+        }
+    }
+}
