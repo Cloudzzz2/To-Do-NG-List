@@ -1,0 +1,11 @@
+:host {
+    .button-group {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .direct-button {
+        margin: 0 0 0 10px;
+        border-radius: 2px;
+    }
+}

@@ -1,0 +1,18 @@
+<div>
+    <dx-select-box [dataSource]="dataSourceForSelectBox"
+                   [formControl]="formControlForSelectBox"
+                   [displayExpr]="LIcon.TEXT"
+                   [valueExpr]="LIcon.VALUE"
+                   [label]="labelName"
+                   [class]="className"
+                   fieldTemplate="field"
+                   labelMode="static">
+        <div *dxTemplate="let data of 'field'"
+             class="sort-n-filters-field">
+            <dx-button [icon]="data.icon"
+                       class="select-box-button"/>
+            <dx-text-box [value]="data.text"
+                         [readOnly]="true"/>
+        </div>            
+    </dx-select-box>
+</div>

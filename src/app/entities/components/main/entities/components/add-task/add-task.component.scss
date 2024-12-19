@@ -1,0 +1,26 @@
+:host {
+    .create-task {
+        margin: 0 auto;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        height: 100px;
+        border: 2px solid black;
+        border-radius: 5px;
+        
+        .priority-select-box {
+            margin: 0 0 0 30px;
+        }
+    
+        .enter-task-text-box {
+            margin: 0 0 0 50px;
+            width: 480px;
+        }
+    
+        .add-task-button {
+            margin: 0 0 0 50px;
+            border-radius: 2px;
+        }
+    }
+}

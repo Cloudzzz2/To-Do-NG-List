@@ -1,0 +1,36 @@
+<div class="tasks">
+    <div *ngIf="tasks.length === 0; else task"
+         class="text-array-is-empty-container">
+        <p class="text-array-is-empty">Список задач пуст</p>
+    </div>
+    <ng-template #task>
+        <div *ngFor="let elem of tasks | filters : filtersFormData"
+             class="task-container">
+             <div class="task-area-and-status">
+                <span [ngClass]="elem.taskPriorityValue === EPriority.LOW ? 'priority-text-low' 
+                : elem.taskPriorityValue === EPriority.MEDIUM ? 'priority-text-medium'
+                : 'priority-text-high'">
+                    {{ elem.taskPriorityText | uppercase }}
+                </span>
+                <dx-autocomplete [ngClass]="elem.status === EStatus.CANCELED ? 'task-field-canceled' 
+                                 : elem.status === EStatus.ACTIVE ? 'task-field-active' : 'task-field-completed'"
+                                 [(value)]="elem.taskText"
+                                 (onChange)="editTask(elem)"/>
+                <span class="cross-check-span">
+                    <dx-button *ngIf="elem.status !== EStatus.COMPLETED"
+                               (onClick)="changeStatus(elem, true)"
+                               icon="check"/>
+                    <dx-button *ngIf="elem.status !== EStatus.CANCELED"
+                               (onClick)="changeStatus(elem, false)"
+                               icon="remove"/>
+                </span>
+                <dx-button (onClick)="deleteTask(elem.id)"
+                           icon="trash"
+                           class="delete-button"/>
+            </div>
+            <div class="date-container">
+                {{ elem.taskDate | date : 'dd.MM.yyyy HH:mm' }}
+            </div>
+        </div>
+    </ng-template>  
+</div>
