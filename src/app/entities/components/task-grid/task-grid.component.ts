@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ITask } from '../../interfaces/task.interface';
 import { LTask } from '../../labels/task.label';
 import { DxDataGridModule } from 'devextreme-angular';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, formatDate } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -28,12 +28,12 @@ export class TaskGridComponent {
   public tasks$: Observable<ITask<string>[]> = this._dataService.getTask().pipe(
     map((items: ITask[]) => {
       return items.map((item: ITask) => {
-        const dateToday: Date = new Date(item.taskDate);
+        const dateToday: Date = new Date(item[LTask.DATE]);
         return {
           ...item,
-          taskDate: `${dateToday.toLocaleDateString()} ${dateToday.getHours()}:${('0' + dateToday.getMinutes()).slice(-2)}`
-        }
-      })
+          taskDate: formatDate(dateToday, 'dd.MM.yyyy HH:mm', 'en-US')
+        };
+      });
     })
   );
 }

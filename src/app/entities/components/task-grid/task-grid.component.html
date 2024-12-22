@@ -1,7 +1,7 @@
 <dx-data-grid [dataSource]="(tasks$ | async) || []"
               [showBorders]="true"
               [showRowLines]="true"
-              [width]="'80%'"
+              width="80%"
               class="data-grid">
     <dxi-column [dataField]="LTask.PRIORITY_TEXT"
                 caption="Приоритет"/>

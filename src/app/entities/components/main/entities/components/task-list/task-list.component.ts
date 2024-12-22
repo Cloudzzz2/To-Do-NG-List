@@ -8,6 +8,7 @@ import { DatePipe, NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { FiltersPipe } from 'src/app/entities/pipes/filters.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IFilterForm } from 'src/app/entities/interfaces/filter-form.interface';
+import { LTask } from 'src/app/entities/labels/task.label';
 
 @Component({
   selector: 'app-task-list',
@@ -41,6 +42,7 @@ export class TaskListComponent {
 
   protected readonly EPriority: typeof EPriority = EPriority;
   protected readonly EStatus: typeof EStatus = EStatus;
+  protected readonly LTask: typeof LTask = LTask;
 
   /**
    * Метод изменения статуса задачи
@@ -48,12 +50,9 @@ export class TaskListComponent {
    * @param {ITask} task - задача
    * @param {boolean} upStatus - значение статуса
    */
+
   public changeStatus(task: ITask, upStatus: boolean): void {
-    if (upStatus) {
-      task.status += 1;
-    } else {
-      task.status -= 1;
-    }
+    upStatus === true ? task[LTask.STATUS] += 1 : task[LTask.STATUS] -= 1;
     this._dataService.refreshTask(task).pipe(
       takeUntilDestroyed(this._destroyRef)
     ).subscribe();
@@ -64,6 +63,7 @@ export class TaskListComponent {
    * 
    * @param {number | null} id - идентификатор задачи
    */
+
   public deleteTask(id: number | null): void {
     if (id !== null) {
       this._dataService.deleteTask(id).pipe(
@@ -77,6 +77,7 @@ export class TaskListComponent {
    * 
    * @param {ITask} task - задача
    */
+
   public editTask(task: ITask): void {
     this._dataService.refreshTask(task).pipe(
       takeUntilDestroyed(this._destroyRef)

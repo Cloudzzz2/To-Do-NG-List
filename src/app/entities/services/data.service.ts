@@ -8,11 +8,12 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class DataService {
-  private readonly _http = inject(HttpClient);
+  private readonly _http: HttpClient = inject(HttpClient);
 
   /**
    * Метод получения задач с сервера
    */
+  
   public getTask(): Observable<ITask[]> {
     return this._http.get<ITask<string>[]>('http://127.0.0.1:3000/items').pipe(
       map((items: ITask<string>[]) => {
@@ -20,8 +21,8 @@ export class DataService {
           return {
             ...item,
             taskDate: new Date(item.taskDate)
-          }
-        })
+          };
+        });
       })
     );
   }
@@ -31,6 +32,7 @@ export class DataService {
    * 
    * @param {ITask} task - задача
    */
+
   public addTask(task: ITask): Observable<ITask> {
     return this._http.post<ITask>(`http://127.0.0.1:3000/items`, JSON.stringify(task), {
       headers: {
@@ -44,6 +46,7 @@ export class DataService {
    * 
    * @param {number} id - айди задачи
    */
+
   public deleteTask(id: number): Observable<ITask> {
     return this._http.delete<ITask>(`http://127.0.0.1:3000/items/${id}`);
   }
@@ -53,6 +56,7 @@ export class DataService {
    * 
    * @param {ITask} task - задача
    */
+
   public refreshTask(task: ITask): Observable<ITask> {
     return this._http.put<ITask>(`http://127.0.0.1:3000/items/${task.id}`, JSON.stringify(task), {
       headers: {

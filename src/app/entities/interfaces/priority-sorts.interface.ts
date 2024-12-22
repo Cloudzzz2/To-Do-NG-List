@@ -6,7 +6,8 @@ import { LIcon } from "../labels/icon.labels";
  * @property {number} VALUE - значение сортировки
  * @property {string} TEXT - текст варианта сортировки
 */
-export interface IItem {
+
+export interface IPrioritySorts {
     [LIcon.VALUE]: number;
     [LIcon.TEXT]: string;
 }

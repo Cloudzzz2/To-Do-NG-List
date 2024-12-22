@@ -36,14 +36,17 @@ export class MainComponent {
   /**
    * Метод получения списка задач
    */
+
   public getTask(): void {
     this.tasks$ = this._dataService.getTask();
   }
 
   /**
    * Метод получения значения полей формы
+   * 
    * @param {IFilterForm} filtersForm - значения полей формы
    */
+  
   public getFiltersForm(filtersForm: IFilterForm): void {
     this.filtersFormData = filtersForm;
   }

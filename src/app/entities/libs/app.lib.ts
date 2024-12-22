@@ -1,37 +1,44 @@
 import { EPriority } from "../enums/priority.enum";
 import { ESort } from "../enums/sort.enum";
-import { IIconItem } from "../interfaces/icon-item.interface";
-import { IItem } from "../interfaces/item.interface";
+import { EStatus } from "../enums/status.enum";
+import { IPrioritySortsExtIcon } from "../interfaces/priority-sorts-icon.interface";
+import { IPrioritySorts } from "../interfaces/priority-sorts.interface";
 import { LIcon } from "../labels/icon.labels";
 
 export abstract class AppLib {
   /**
    * Значение приоритета по умолчанию
    */
-  public static readonly defaultPriority: number = 1;
+
+  public static readonly defaultPriority: EPriority = EPriority.LOW;
 
   /**
    * Значение статуса по умолчанию
    */
-  public static readonly defaultStatus: number = 2;
+
+  public static readonly defaultStatus: EStatus = EStatus.ACTIVE;
 
   /**
    * Значение сортировки по приоритету по умолчанию
    */
-  public static readonly defaultPrioritySort: number = 1;
+
+  public static readonly defaultPrioritySort: ESort = ESort.ASCENDING;
 
   /**
    * Значение сортировки по дате по умолчанию
    */
-  public static readonly defaultDateSort: number = 1;
+
+  public static readonly defaultDateSort: ESort = ESort.ASCENDING;
 
   /**
    * Значения сортировки по дате
+   * 
    * @property {number} VALUE - числовое значение сортировки
    * @property {string} TEXT - текст сортировки
    * @property {string} ICON - изображение(иконка) сортировки
    */
-  public static readonly dateSortVariants: IIconItem[] = [
+
+  public static readonly dateSortVariants: IPrioritySortsExtIcon[] = [
       {
         [LIcon.VALUE]: ESort.ASCENDING, 
         [LIcon.TEXT]: 'дата создания', 
@@ -46,10 +53,12 @@ export abstract class AppLib {
 
   /**
    * Значения вариантов приоритета
+   * 
    * @property {number} VALUE - числовое значение приоритета
    * @property {string} TEXT - текст сортировки
    */
-  public static readonly priorityVariants: IItem[] = [
+
+  public static readonly priorityVariants: IPrioritySorts[] = [
     {
       [LIcon.VALUE]: EPriority.LOW,
       [LIcon.TEXT]: 'низкий'
@@ -66,10 +75,12 @@ export abstract class AppLib {
 
   /**
    * Значения фильтрации по приоритету
+   * 
    * @property {number} VALUE - числовое значение варианта фильтрации
    * @property {string} TEXT - текст варианта фильтрации
    */
-  public static readonly priorityFilterVariants: IItem[] = [
+
+  public static readonly priorityFilterVariants: IPrioritySorts[] = [
     {
       [LIcon.VALUE]: EPriority.ANY,
       [LIcon.TEXT]: 'любой'
@@ -90,11 +101,13 @@ export abstract class AppLib {
 
     /**
    * Значения сортировки по приоритету
+   * 
    * @property {number} VALUE - числовое значение сортировки
    * @property {string} TEXT - текст сортировки
    * @property {string} ICON - изображение(иконка) сортировки
    */
-  public static readonly prioritySortVariants: IIconItem[] = [
+
+  public static readonly prioritySortVariants: IPrioritySortsExtIcon[] = [
     {
       [LIcon.VALUE]: ESort.ASCENDING, 
       [LIcon.TEXT]: 'приоритет', 

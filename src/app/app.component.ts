@@ -9,7 +9,6 @@ import { DxButtonModule } from 'devextreme-angular';
     DxButtonModule,
     RouterModule
   ],
-  providers: [],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

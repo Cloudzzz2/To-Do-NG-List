@@ -1,5 +1,4 @@
-<div [formGroup]="inputForm"
-     class="create-task">
+<ng-container [formGroup]="inputForm">
     <dx-select-box [items]="priorities"
                    [valueExpr]="LIcon.VALUE"
                    [displayExpr]="LIcon.TEXT"
@@ -17,4 +16,4 @@
                type="normal" 
                text="Добавить задачу"
                class="add-task-button"/>
-</div>
+</ng-container>

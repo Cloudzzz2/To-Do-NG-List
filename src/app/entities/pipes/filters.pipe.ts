@@ -13,32 +13,22 @@ import { LFilterForm } from '../labels/filter-form.label';
   name: 'filters'
 })
 export class FiltersPipe implements PipeTransform {
+
   /**
    * Фильтрация и сортировка задач
+   * 
    * @param {ITask[]} items - задачи
    * @param {IFilterForm | null} filtersFormValue - значения формы фильтрации
-   * @returns
-   * 
    */
+
   public transform(items:ITask[], filtersFormValue: IFilterForm | null): ITask[] {
-    if (filtersFormValue === null) {
+    if (!filtersFormValue) {
       items = items.sort((a: ITask, b: ITask) => b[LTask.PRIORITY] - a[LTask.PRIORITY]);
       return items;
     }
-    switch (filtersFormValue[LFilterForm.PRIORITY_FILTER]) {
-      // Фильтр по приоритету
-      case (EPriority.LOW): {
-        items = items.filter((item: ITask) => item[LTask.PRIORITY] === EPriority.LOW);
-        break;
-      }
-      case (EPriority.MEDIUM): {
-        items = items.filter((item: ITask) => item[LTask.PRIORITY] === EPriority.MEDIUM);
-        break;
-      }
-      case (EPriority.HIGH): {
-        items = items.filter((item: ITask) => item[LTask.PRIORITY] === EPriority.HIGH);
-        break;
-      }
+
+    if (filtersFormValue[LFilterForm.PRIORITY_FILTER]) {
+      items = items.filter((item: ITask) => item[LTask.PRIORITY] === filtersFormValue[LFilterForm.PRIORITY_FILTER] as EPriority)
     }
 
     // Фильтр по статусу

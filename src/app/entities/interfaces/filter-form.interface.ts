@@ -11,6 +11,7 @@ import { LFilterForm } from "../labels/filter-form.label";
  * @property {number | null} PRIORITY_SORT - сортировка по приоритету
  * @property {string | null} SEARCH - поле поиска задачи
  */
+
 export interface IFilterForm {
     [LFilterForm.PRIORITY_FILTER]: number | null;
     [LFilterForm.STATUS_ACTIVE]: boolean | null;

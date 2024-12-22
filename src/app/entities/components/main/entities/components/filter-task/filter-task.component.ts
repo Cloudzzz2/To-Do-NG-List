@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppLib } from 'src/app/entities/libs/app.lib';
 import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
 import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
-import { IItem } from 'src/app/entities/interfaces/item.interface';
-import { IIconItem } from 'src/app/entities/interfaces/icon-item.interface';
+import { IPrioritySorts } from 'src/app/entities/interfaces/priority-sorts.interface';
+import { IPrioritySortsExtIcon } from 'src/app/entities/interfaces/priority-sorts-icon.interface';
 import { LIcon } from 'src/app/entities/labels/icon.labels';
 import { CustomFieldSelectBoxComponent } from './entities/components/custom-field-select-box/custom-field-select-box';
 import { IFilterForm } from 'src/app/entities/interfaces/filter-form.interface';
@@ -30,14 +30,13 @@ export class FilterTaskComponent implements OnInit {
   private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
   private readonly _destroyRef: DestroyRef = inject(DestroyRef);
 
-
   @Output()
   public filtersFormData: EventEmitter<IFilterForm> = new EventEmitter();
 
   public filtersForm = this._formBuilderService.filtersForm;
-  public prioritiesFilter: IItem[] = AppLib.priorityFilterVariants;
-  public dates: IIconItem[] = AppLib.dateSortVariants;
-  public priorities: IIconItem[] = AppLib.prioritySortVariants; 
+  public prioritiesFilter: IPrioritySorts[] = AppLib.priorityFilterVariants;
+  public dates: IPrioritySortsExtIcon[] = AppLib.dateSortVariants;
+  public priorities: IPrioritySortsExtIcon[] = AppLib.prioritySortVariants; 
 
   protected readonly LFilterForm: typeof LFilterForm = LFilterForm;
   protected readonly LIcon: typeof LIcon = LIcon;
