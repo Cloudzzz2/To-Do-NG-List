@@ -1,0 +1,51 @@
+import { Component, DestroyRef, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { FormBuilderService } from '../../../../../services/form-builder.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppLib } from 'src/app/entities/libs/app.lib';
+import { DxAutocompleteModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
+import { LFilterForm } from 'src/app/entities/labels/filter-form.label';
+import { IPrioritySort } from 'src/app/entities/interfaces/priority-sorts.interface';
+import { IPrioritySortExtIcon } from 'src/app/entities/interfaces/priority-sorts-icon.interface';
+import { LIcon } from 'src/app/entities/labels/icon.labels';
+import { CustomFieldSelectBoxComponent } from './entities/components/custom-field-select-box/custom-field-select-box';
+import { IFilterForm } from 'src/app/entities/interfaces/filter-form.interface';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+@Component({
+  selector: 'app-filter-task',
+  standalone: true,
+  imports: [
+    CustomFieldSelectBoxComponent,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxButtonModule,
+    DxAutocompleteModule,
+    DxTextBoxModule,
+    ReactiveFormsModule
+  ],
+  templateUrl: './filter-task.component.html',
+  styleUrls: ['./filter-task.component.scss']
+})
+export class FilterTaskComponent implements OnInit {
+  private readonly _formBuilderService: FormBuilderService = inject(FormBuilderService);
+  private readonly _destroyRef: DestroyRef = inject(DestroyRef);
+
+  @Output()
+  public filtersFormData: EventEmitter<IFilterForm> = new EventEmitter();
+
+  public filtersForm = this._formBuilderService.filtersForm;
+  public prioritiesFilter: IPrioritySort[] = AppLib.priorityFilterVariants;
+  public dates: IPrioritySortExtIcon[] = AppLib.dateSortVariants;
+  public priorities: IPrioritySortExtIcon[] = AppLib.prioritySortVariants; 
+
+  protected readonly LFilterForm: typeof LFilterForm = LFilterForm;
+  protected readonly LIcon: typeof LIcon = LIcon;
+
+  public ngOnInit(): void {
+    this.filtersForm.valueChanges.pipe(
+      takeUntilDestroyed(this._destroyRef)
+    ).subscribe(() => {
+      this.filtersFormData.emit(this.filtersForm.getRawValue());
+  });
+  }
+}

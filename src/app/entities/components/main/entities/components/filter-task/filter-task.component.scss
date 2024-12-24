@@ -1,0 +1,46 @@
+:host {
+    .filter-task {
+        padding-block: 30px 30px;
+        margin: 50px auto 0;
+        width: 1000px;
+        height: fit-content;
+        border: 2px solid black;
+        border-radius: 5px;
+
+        .sort-and-filters {
+            display: flex;
+            flex-direction: row;
+
+            &__priority-select {
+                width: 250px;
+                margin-inline: 60px 0;
+            }
+
+            .checkbox-group {
+                align-self: center;
+                display: flex;
+                margin-inline: 150px 0;
+                width: 500px;
+
+                &__title {
+                    align-self: center;
+                    margin-right: 25px;
+                }
+
+                &__checkbox-text {
+                    margin: 2px 5px 0;
+                }
+            }
+        }
+
+        .sorts {
+            margin-block: 30px 30px;
+            display: flex;
+        }
+
+        .search-task {
+            margin: 30px 0 0 60px;
+            width: 85%;
+        }
+    }
+}
