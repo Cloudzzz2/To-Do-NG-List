@@ -1,13 +1,13 @@
 import { LIcon } from "../labels/icon.labels";
-import { IPrioritySorts } from "./priority-sorts.interface";
+import { IPrioritySort } from "./priority-sorts.interface";
 
 /**
  * Расширенные варианты сортировки
  * 
  * @property {string} ICON - значок/иконка
- * @extends IPrioritySorts
+ * @extends IPrioritySort
  */
 
-export interface IPrioritySortsExtIcon extends IPrioritySorts {
+export interface IPrioritySortExtIcon extends IPrioritySort {
     [LIcon.ICON]: string;
 }

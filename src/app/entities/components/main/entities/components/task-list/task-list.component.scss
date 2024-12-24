@@ -43,7 +43,7 @@
                     &-low, 
                     &-medium, 
                     &-high {
-                        margin: 0 0 0 30px;
+                        margin-left: 30px;
                         width: 100px;
                     }
                     
@@ -65,7 +65,7 @@
                     &-active,
                     &-completed {
                         width: 85%;
-                        margin: 0 0 0 20px;
+                        margin-left: 20px;
                         min-height: 100px;
                         height: fit-content;
                     }
@@ -88,7 +88,7 @@
                 }
 
                 .delete-button {
-                    margin: 0 30px 0 10px;
+                    margin-inline: 10px 30px;
                 }
             }
 

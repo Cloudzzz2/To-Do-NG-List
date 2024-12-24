@@ -53,6 +53,7 @@ export class TaskListComponent {
 
   public changeStatus(task: ITask, upStatus: boolean): void {
     upStatus === true ? task[LTask.STATUS] += 1 : task[LTask.STATUS] -= 1;
+
     this._dataService.refreshTask(task).pipe(
       takeUntilDestroyed(this._destroyRef)
     ).subscribe();

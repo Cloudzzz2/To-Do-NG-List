@@ -1,8 +1,8 @@
 import { EPriority } from "../enums/priority.enum";
 import { ESort } from "../enums/sort.enum";
 import { EStatus } from "../enums/status.enum";
-import { IPrioritySortsExtIcon } from "../interfaces/priority-sorts-icon.interface";
-import { IPrioritySorts } from "../interfaces/priority-sorts.interface";
+import { IPrioritySortExtIcon } from "../interfaces/priority-sorts-icon.interface";
+import { IPrioritySort } from "../interfaces/priority-sorts.interface";
 import { LIcon } from "../labels/icon.labels";
 
 export abstract class AppLib {
@@ -38,7 +38,7 @@ export abstract class AppLib {
    * @property {string} ICON - изображение(иконка) сортировки
    */
 
-  public static readonly dateSortVariants: IPrioritySortsExtIcon[] = [
+  public static readonly dateSortVariants: IPrioritySortExtIcon[] = [
       {
         [LIcon.VALUE]: ESort.ASCENDING, 
         [LIcon.TEXT]: 'дата создания', 
@@ -58,7 +58,7 @@ export abstract class AppLib {
    * @property {string} TEXT - текст сортировки
    */
 
-  public static readonly priorityVariants: IPrioritySorts[] = [
+  public static readonly priorityVariants: IPrioritySort[] = [
     {
       [LIcon.VALUE]: EPriority.LOW,
       [LIcon.TEXT]: 'низкий'
@@ -80,7 +80,7 @@ export abstract class AppLib {
    * @property {string} TEXT - текст варианта фильтрации
    */
 
-  public static readonly priorityFilterVariants: IPrioritySorts[] = [
+  public static readonly priorityFilterVariants: IPrioritySort[] = [
     {
       [LIcon.VALUE]: EPriority.ANY,
       [LIcon.TEXT]: 'любой'
@@ -107,7 +107,7 @@ export abstract class AppLib {
    * @property {string} ICON - изображение(иконка) сортировки
    */
 
-  public static readonly prioritySortVariants: IPrioritySortsExtIcon[] = [
+  public static readonly prioritySortVariants: IPrioritySortExtIcon[] = [
     {
       [LIcon.VALUE]: ESort.ASCENDING, 
       [LIcon.TEXT]: 'приоритет', 

@@ -6,7 +6,7 @@ import { AppLib } from '../../../../../libs/app.lib';
 import { LTask } from 'src/app/entities/labels/task.label';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LInputForm } from 'src/app/entities/labels/input-form.label';
-import { IPrioritySorts } from 'src/app/entities/interfaces/priority-sorts.interface';
+import { IPrioritySort } from 'src/app/entities/interfaces/priority-sorts.interface';
 import { LIcon } from 'src/app/entities/labels/icon.labels';
 import { DxSelectBoxModule, DxTextBoxModule, DxButtonModule } from 'devextreme-angular';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -32,7 +32,7 @@ export class AddTaskComponent {
   @Output()
   public refreshTask: EventEmitter<void> = new EventEmitter();
 
-  public priorities: IPrioritySorts[] = AppLib.priorityVariants;
+  public priorities: IPrioritySort[] = AppLib.priorityVariants;
   public inputForm = this._formBuilderService.inputForm;
 
   protected readonly LIcon: typeof LIcon = LIcon;
@@ -44,7 +44,7 @@ export class AddTaskComponent {
 
   public addTask(): void {
     if (this.inputForm.valid) {
-      const priorityText: IPrioritySorts | undefined = this.priorities.find((variant: IPrioritySorts) => variant[LIcon.VALUE] === this.inputForm.controls[LInputForm.PRIORITY].value);
+      const priorityText: IPrioritySort | undefined = this.priorities.find((variant: IPrioritySort) => variant[LIcon.VALUE] === this.inputForm.controls[LInputForm.PRIORITY].value);
       const task: ITask = {
         [LTask.ID]: null,
         [LTask.TEXT]: <string>this.inputForm.controls[LInputForm.INPUT].value,
